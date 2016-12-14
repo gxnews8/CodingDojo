@@ -11,9 +11,9 @@ Typing command: mkdir test
 
 4. command
 cd test
-vi index.html
-vi style.css
-vi command.txt
+touch index.html
+touch style.css
+touch command.txt
 
 5. command
 cp index.html index_2.html
