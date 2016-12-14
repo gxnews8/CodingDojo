@@ -1,0 +1,55 @@
+/*CSS reset settings here*/
+*{
+  margin: 0px;
+  padding: 0px;
+  background-color: #2b5b84;
+}
+#wrapper{
+ width: 970px;
+ margin: 0px auto;
+}
+#header{
+ height: 5px;
+}
+#navigation{
+ height: 50px;
+ border: 1px solid #629ccd;
+ box-shadow: 0 0 20px rgba(0,0,0,0.4);
+ border-radius: 5px;
+ margin: 5px;
+ font-size: 22px;
+ line-height: 50px;
+ padding: 5px 10px;
+}
+#navigation li{
+  display: inline;
+  border-right: 1px solid #629ccd;
+  padding-right: 10px;
+  color: white;
+}
+#main_content{
+ height: 600px;
+}
+.subcontents{
+ height: 200px;
+ width: 210px;
+ border-radius: 5px;
+ margin: 10px;
+ border: 1px solid #629ccd;
+}
+.subcontents2{
+ height: 400px;
+ width: 720px;
+ border-radius: 5px;
+ margin-right: 10px;
+ float: right;
+ border: 1px solid #629ccd;
+}
+#advertisement{
+ height: 30px;
+ border-radius: 5px;
+ margin: 10px;
+}
+.clear{
+  clear: both;
+}

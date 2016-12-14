@@ -1,4 +1,4 @@
-Hi, this is my commands
+Hi, this is my commands.12/13/16
 
 1. Open Terminal
 Click the ioc, and open it.
