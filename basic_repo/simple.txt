@@ -1,0 +1,7 @@
+1.mkdir basic_repo
+2.touch 12-14-16.txt Coding.txt Dojo.txt Jing.txt Du.txt
+3.git add .
+4.git commit -m "12/14/16"
+5.vi Coding.txt
+6.git push
+

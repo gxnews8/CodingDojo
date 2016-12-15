@@ -1,0 +1,103 @@
+/*CSS reset settings here*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#wrapper{
+  width: 970px;
+  margin: 0px auto;
+  background-color: #eee;
+}
+#header{
+  height: 50px;
+  width: 970px;
+  display: inline-block;
+}
+#logo{
+  width: 200px;
+  display: inline-block;
+}
+#logo img{
+  height: 50px;
+  margin: 10px;
+}
+#tip{
+  width: 320px;
+  display: inline-block;
+  line-height: 70px;
+  font-weight: bold;
+  float: right;
+}
+#navigation{
+  height: 30px;
+  border: 1px solid #aaa;
+  border-left: none;
+  border-right: none;
+}
+#navigation ul li{
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: inline-block;
+  /*border: 1px solid #ddd;*/
+}
+#navigation ul li a{
+  padding: 7px 39px;
+  text-decoration: none;
+  color: dodgerblue;
+}
+#navigation ul li a:hover{
+  color: white;
+  background-color: dodgerblue;
+  }
+}
+#main_content{
+  height: 680px;
+  background-size: 970px;
+  background: url('https://static.vecteezy.com/system/resources/previews/000/106/719/original/vector-abstract-blue-wave-background.jpg')
+}
+.subcontents{
+  height: 200px;
+  width: 450px;
+  margin: 20px 0px 20px 20px;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+.subcontents img{
+  width: 430px;
+  height: 180px;
+  margin: 10px;
+}
+.submenu{
+  height: 30px;
+  background-color: #eee;
+  padding: 0 10px;
+  line-height: 30px;
+  font-weight: bold;
+}
+.contents{
+  padding: 10px;
+}
+.c-title{
+  font-weight: bold;
+}
+.storage{
+  height: 400px;
+  width: 214px;
+  margin-left: 20px;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+.product{}
+.product img{
+  width: 214px;
+}
+.more{
+  width: 85px;
+  border: 1px solid #aaa;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  float: right;
+  box-shadow: 0px 0px 10px 3px rgba(243, 7, 181, 0.5);
+}
