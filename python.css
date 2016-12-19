@@ -14,18 +14,27 @@
 #navigation{
  height: 50px;
  border: 1px solid #629ccd;
- box-shadow: 0 0 20px rgba(0,0,0,0.4);
+ box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.5);
  border-radius: 5px;
  margin: 5px;
  font-size: 22px;
  line-height: 50px;
  padding: 5px 10px;
 }
-#navigation li{
+#navigation ul li{
   display: inline;
-  border-right: 1px solid #629ccd;
-  padding-right: 10px;
+  *border-right: 1px solid #629ccd;
+  *padding-right: 10px;
   color: white;
+}
+#navigation ul li a{
+  color: #629ccd;
+  padding: 17px 20px;
+  text-decoration: none;
+}
+#navigation ul li a:hover{
+  color: #fff;
+  background-color: #629ccd;
 }
 #main_content{
  height: 600px;
@@ -35,21 +44,59 @@
  width: 210px;
  border-radius: 5px;
  margin: 10px;
- border: 1px solid #629ccd;
+ *border: 1px solid #629ccd;
+ padding: 10px;
+ text-align: center;
+}
+.subcontents ul li{
+  list-style: none;
+}
+.subcontents ul li a{
+  color: #fff;
+  line-height: 25px;
+  text-align: center;
+
 }
 .subcontents2{
+  color: yellow;
  height: 400px;
  width: 720px;
  border-radius: 5px;
  margin-right: 10px;
  float: right;
- border: 1px solid #629ccd;
+ *border: 1px solid #629ccd;
+}
+.subcontents2 ul{
+  text-align: center;
+}
+.subcontents2 ul li{
+  list-style: none;
+}
+.python{
+  color: #fff;
 }
 #advertisement{
  height: 30px;
  border-radius: 5px;
  margin: 10px;
+ text-align: center;
+}
+#advertisement ul li{
+  color: #629ccd;
+  display: inline-block;
+  padding: 10px;
 }
 .clear{
   clear: both;
+}
+.getting{
+  display: inline-block;
+}
+.start{
+  background-color: #fff;
+  margin-left: 10px;
+  height: 100px;
+  width: 450px;
+  float: left;
+  padding: 10px;
 }

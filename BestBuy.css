@@ -1,0 +1,198 @@
+/*CSS reset settings here*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  font-size: 13px;
+  background: #003b64;
+}
+.h10{
+  height: 10px;
+}
+.clear{
+  clear: both;
+}
+.wrapper{
+ *border: 1px solid #ddd;
+}
+.header{
+  margin: 0px auto;
+  padding: 10px;
+  height: 80px;
+  width: 980px;
+  background: #003b64;
+  *border: 1px solid #ddd;
+}
+.top{
+  font-size: 13px;
+}
+.top a{
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  text-decoration: none;
+}
+.top a:hover{
+  text-decoration: underline;
+}
+.service{
+width: 300px;
+float: left;
+}
+.status{
+width: 300px;
+float: right;
+}
+.status ul li{
+  margin: 0 10px;
+  display: inline-block;
+}
+.status ul li a:hover{
+  *text-decoration: underline;
+}
+.logo{
+  height: 50px;
+  width: 980px;
+  color: #eee;
+  text-decoration: none;
+  background: url(http://css.bbystatic.com/header-footer-v4/images/header_sprite-be924d2499e93fcb5096031ddf275dd0.png) no-repeat 0 -3px;
+}
+.logo a:hover{
+  text-decoration: underline;
+}
+.form{
+
+}
+.keyword{
+  padding: 10px;
+  width: 420px;
+  border-radius: 5px;
+  border: none;
+}
+.search{
+  margin-left: 100px;
+  float: left;
+  *border: 1px solid #ddd;
+}
+.sign{
+  width: 300px;
+  float: right;
+  *border: 1px solid #ddd;
+}
+.sign a{
+  color: #eee;
+  text-decoration: none;
+}
+.sign ul li{
+  margin: 0 10px;
+  display: inline-block;
+}
+.navigation{
+ margin: 0px auto;
+ height: 40px;
+ line-height: 40px;
+ width: 1000px;
+ background: #002e4e;
+ *border: 1px solid #ddd;
+ *box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.5);
+ *border-radius: 5px;
+}
+.menu{
+  float: left;
+}
+.menu ul li{
+  display: inline-block;
+}
+.menu ul li a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px;
+}
+.gift{
+  float: right;
+}
+.gift ul li{
+  display: inline-block;
+}
+.gift ul li a{
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+}
+.gift ul li a:hover{
+  text-decoration: underline;
+}
+.ads{
+  height: 477px;
+  background: url('http://img.bbystatic.com//BestBuy_US/store/ee/2016/global/Holiday2016/microsoft/ghp-microsoft-pm-lg.jpg') no-repeat center top;
+}
+.featured{
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+  background: #002e4e;
+  padding: 10px;
+  width: 1000px;
+  margin: 0 auto;
+}
+.products{
+  width: 29%;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 21px;
+  float: left;
+  margin-left: -1px;
+}
+.products img{
+  width: 100%;
+}
+.pro-text{
+  font-weight: bold;
+  color: red;
+}
+.pro-title{
+font-weight: bold;
+color: #aaa;
+font-size: 24px;
+}
+.pro-dec{
+ color: #ddd;
+}
+.buylink a{
+  text-decoration: none;
+  color: #fff;
+}
+.contents{
+  margin: 0px auto;
+  height: 641px;
+  width: 1000px;
+  overflow: hidden;
+  *border: 1px solid #ddd;
+}
+.footer{
+  margin: 0px auto;
+  height: 150px;
+  width: 1000px;
+  overflow: hidden;
+  *border: 1px solid #ddd;
+}
+.footer ul{
+  margin-left: -1px;
+}
+.footer ul li{
+  display: inline-block;
+  border-left: 1px solid #ddd;
+  padding: 3px;
+}
+.footer ul li a{
+  text-decoration: none;
+  color: #fff;
+}
+.footer ul li a:hover{
+  text-decoration: underline;
+}
+.whole{
+  background: #002e4e;
+}

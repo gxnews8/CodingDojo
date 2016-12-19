@@ -1,0 +1,113 @@
+/*CSS reset settings here*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  font-size: 13px;
+  background: #d4d1b0;
+}
+.h10{
+  height: 10px;
+}
+.w10{
+  width: 10px;
+  display: inline-block;
+}
+.inline{
+  display: inline-block;
+}
+.clear{
+  clear: both;
+}
+.wrapper{
+ *border: 1px solid #ddd;
+}
+.header{
+  height: 100px;
+  width: 970px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.header ul li{
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+}
+.header img{
+  height: 50px;
+}
+.logo{
+  *border: 1px solid #ddd;
+  width: 100px;
+  float: left;
+}
+.git{
+  *border: 1px solid #ddd;
+  width: 705px;
+  height: 55px;
+  line-height: 55px;
+  float: right;
+}
+.main{
+  *border: 1px solid #ddd;
+  width: 970px;
+  margin: 0 auto;
+}
+.contents{
+  *border: 1px solid #ddd;
+  width: 950px;
+  height: 635px;
+  padding: 10px;
+  background: #fae596;
+  margin: 0 auto;
+}
+.contents-l{
+  border: 1px solid #ddd;
+  width: 25%;
+  height: 610px;
+  float: left;
+  *margin-left: 10px;
+  padding: 10px;
+  background: #173f43;
+}
+.contents-r{
+  *border: 1px solid #ddd;
+  width: 663px;
+  height: 630px;
+  float: right;
+  overflow: hidden;
+}
+.inits{
+  *border: 1px solid #ddd;
+  width: 190px;
+  height: 180px;
+  display: inline-block;
+  *margin-right: 12px;
+  padding: 10px;
+  background: #173f43;
+}
+.commit{
+  *border: 1px solid #ddd;
+  width: 303px;
+  height: 180px;
+  display: inline-block;
+  *margin-right: 29px;
+  padding: 10px;
+  background: #173f43;
+}
+.push{
+  border: 1px solid #ddd;
+  height: 180px;
+  *width: 612px;
+  padding: 10px;
+  background: #173f43;
+}
+.footer{
+  *border: 1px solid #ddd;
+  height: 50px;
+  padding: 10px;
+  line-height: 50px;
+  text-align: center;
+  background: #3fb0ac;
+}

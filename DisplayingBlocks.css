@@ -1,0 +1,49 @@
+/*CSS reset settings here*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  font-size: 13px;
+  background: #d4d1b0;
+}
+.h10{
+  height: 10px;
+}
+.clear{
+  clear: both;
+}
+.wrapper{
+ *border: 1px solid #ddd;
+}
+.header{
+  height: 100px;
+  width: 970px;
+  margin: 0 auto;
+  font-size: 40px;
+  margin-top: 20px;
+}
+.header ul li{
+  display: inline-block;
+  width: 32%;
+  text-align: center;
+}
+.header img{
+  height: 50px;
+}
+.blocks{
+  width: 970px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px;
+}
+.blocks ul li{
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid;
+  margin-bottom: 4px;
+  background: #84b5eb;
+}
+.blocks img{
+  width: 167px;
+}

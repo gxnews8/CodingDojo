@@ -95,6 +95,7 @@
 .more{
   width: 85px;
   border: 1px solid #aaa;
+  border-radius: 5px;
   margin: 10px;
   padding: 5px 10px;
   background-color: #ddd;
