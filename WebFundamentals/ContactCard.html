@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Card</title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script>
+      $(document).ready(function(){
+        $('input').focus(function(){
+          $(this).val('');
+        })
+        $('button').on('click', function(){
+          $('.list').append('<div class="Card" data-description="'+$('.description').val()+'">'+$('.FirstName').val()+' '+$('.LastName').val()+'</div>');
+          $('.Card').css({'width': '200px', 'height': '120px', 'margin': '10px', 'padding': '10px', 'border': '1px solid #ddd'});
+          $('.Card').on('click', function(){
+            $(this).html($(this).attr('data-description'));
+          })
+        })
+      })
+    </script>
+    <style media="screen">
+      table{
+        *border: 1px solid #ddd;
+      }
+      th,td{
+        padding: 10px 40px;
+        *border: 1px solid #eee;
+      }
+      .left_box, .right_box{
+        width: 45%;
+        display: inline-block;
+      }
+      .left_box{
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="left_box">
+        <form class="form">
+          <div class="formBody">
+            <table>
+              <tr>
+                <td>First Name:</td>
+                <td><input type="text" class="FirstName" value="First Name"></td>
+              </tr>
+              <tr>
+                <td>Last Name:</td>
+                <td><input type="text" class="LastName" value="Last Name"></td>
+              </tr>
+              <tr>
+                <td>Description:</td>
+                <td><textarea class="description" rows="8" cols="18">Enter descriptionEnter descriptionEnter descriptionEnter descriptionEnter descriptionEnter descriptionEnter descriptionEnter description</textarea></td>
+              </tr>
+            </table>
+          </div>
+          <div class="formButton">
+            <button type="button" name="button">Add User</button>
+          </div>
+        </form>
+      </div>
+      <div class="right_box">
+        <span class="list"></span>
+      </div>
+    </div>
+  </body>
+</html>

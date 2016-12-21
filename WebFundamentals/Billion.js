@@ -1,10 +1,8 @@
-function Billion(day) {
-  var salary = 0.01;
-  day = 1;
-  for (var i = 1; i <= 30; i++) {
-    salary = salary + 1;
-    console.log(salary);
-    day++;
-  }
+var salary = 0.01;
+days = 1;
+for (var i = 1; i <= 30; i++) {
+  console.log(salary);
+  salary = salary * 2;
+  console.log(days);
+  days++;
 }
-Billion(10);

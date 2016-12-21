@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Happy First Day Of Winter - jQuery .hover()</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('img').hover(
+          function(){
+            $(this).data('data-alt-src', $(this).attr('src'));
+            $(this).attr('src', $(this).attr('data-alt-src'));
+            $(this).attr('data-alt-src', $(this).data('data-alt-src'));
+          },function(){
+            $(this).data('data-alt-src', $(this).attr('src'));
+            $(this).attr('src', $(this).attr('data-alt-src'));
+            $(this).attr('data-alt-src', $(this).data('data-alt-src'));
+        });
+      })
+    </script>
+    <style media="screen">
+      .album{
+        *width: 812px;
+      }
+      .album img{
+        display: inline-block;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="album">
+      <img src="http://tmib.com/wp-content/uploads/2012/12/first-day-of-winter.jpg" data-alt-src="http://www.evilmilk.com/pictures/First_Day_Of_Winter.jpg">
+      <img src="https://cdn4.dogonews.com/system/ckeditor_assets/pictures/50d4dccd1860e01765000af8/content_WinterOORAH07BRR-vi.gif" data-alt-src="http://www.lookingglassreview.com/assets/images/The_First_Day_of_Winter.jpg">
+      <img src="http://www.lovethispic.com/uploaded_images/223781-Happy-First-Day-Of-Winter.jpg" data-alt-src="http://new.partyfunbox.com/wp-content/uploads/2015/12/First_Day_of_Winter_1024x1024.jpg">
+      <img src="http://www.almanac.com/sites/default/files/images/winter_infinity.jpg" data-alt-src="http://www.clipartkid.com/images/593/first-day-of-winter-39Nn7C-clipart.gif">
+      <img src="https://s-media-cache-ak0.pinimg.com/564x/16/82/dc/1682dc938e6c7ad87af16797dbb6d2fc.jpg" data-alt-src="http://www.lovethispic.com/uploaded_images/223776-Happy-1st-Day-Of-Winter.jpg">
+      <img src="http://firstdayof.org/wp-content/uploads/2015/10/First-Day-of-Winter-2015.jpg" data-alt-src="http://www.clipartkid.com/images/593/december-21st-marks-the-first-day-of-winter-winter-solstice-zhAE8Q-clipart.jpg">
+      <img src="http://www.clipartkid.com/images/593/happy-first-day-of-winter-03-c0t20p-clipart.jpg" data-alt-src="http://www.clipartkid.com/images/137/eoccs-technology-blog-first-day-of-winter-CF7Fu2-clipart.gif">
+      <img src="https://www.google.com/logos/doodles/2016/winter-solstice-2016-northern-hemisphere-4788310770712576-hp.gif" data-alt-src="http://www.lovethispic.com/uploaded_images/223778-First-Day-Of-Winter.jpg">
+    </div>
+  </body>
+</html>

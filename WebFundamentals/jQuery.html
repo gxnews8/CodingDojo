@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        //.click .hide
+        $('.hide').click(function() {
+          $('.blah').hide('slow');
+        })
+        //.show
+        $('.show').click(function(){
+          $('.blah').show('slow');
+        })
+        //.toggle
+        $('.toggle').click(function(){
+          $('.blah').toggle('slow');
+        })
+        //.slideDown
+        $('.slideDown').click(function(){
+          $('.blah').slideDown('slow');
+        })
+        //.slideUp
+        $('.slideUp').click(function(){
+          $('.blah').slideUp('slow');
+        })
+        //.slideToggle
+        $('.slideToggle').click(function(){
+          $('.blah').slideToggle('slow');
+        })
+        //.fadeIn
+        $('.fadeIn').click(function(){
+          $('.blah').fadeIn('slow');
+        })
+        //.fadeOut
+        $('.fadeOut').click(function(){
+          $('.blah').fadeOut('slow');
+        })
+        //.addClass
+        $('.addClass').click(function(){
+          $('.blah').addClass('border');
+        })
+        //.before
+        $('.before').click(function(){
+          $('.blah').before('I just insert some content in before.');
+        })
+        //.after
+        $('.after').click(function(){
+          $('.blah').after('I just insert some content in after.');
+        })
+        //.append
+        $('.append').click(function(){
+          $('.blah').append('I just add some content inside.');
+        })
+        //.html
+        $('.html').click(function(){
+          $('.blah').html('I just insert some <h1>HTML</h1>');
+        })
+        //.attr
+        $('.attr').click(function(){
+          $('.blah').attr('data-name','CodingDojo');
+          alert('Some change in the source.');
+        })
+        //.val
+        $('.val').click(function(){
+          $('input').val('I like .html, but I need a input.');
+        })
+        //.text
+        $('.text').click(function(){
+          $('.blah').text('I like .html, but have a little bit different. I just TEXT.');
+        })
+        //.data
+        $('.data').click(function(){
+          $('.blah').data('name','Hello Coding Dojo!');
+          $('input').val($('.blah').data('name'));
+        })
+        //.dbclick
+        $('.blah').click(function(){
+          $(this).toggleClass('bigger');
+        })
+      })
+    </script>
+    <style media="screen">
+      .blah{
+        width: 100px;
+        height: 100px;
+        background: red;
+        display: inline-block;
+      }
+      input{
+        width: 155px;
+      }
+      .blah2{
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+      }
+      .clear{
+        clear: both;
+      }
+      .border{
+        border: 5px solid blue;
+      }
+      .bigger{
+        width: 200px;
+        height: 200px;
+        background: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blah">
+
+    </div>
+    <input type="text" name="" value="">
+    <div class="blah2">
+
+    </div>
+    <div class="clear">
+
+    </div>
+    <button type="button" name="button" class="hide">.hide</button>
+    <button type="button" name="button" class="show">.show</button>
+    <button type="button" name="button" class="toggle">.toggle</button>
+    <button type="button" name="button" class="slideDown">.slideDown</button>
+    <button type="button" name="button" class="slideUp">.slideUp</button>
+    <button type="button" name="button" class="slideToggle">.slideToggle</button>
+    <button type="button" name="button" class="fadeIn">.fadeIn</button>
+    <button type="button" name="button" class="fadeOut">.fadeOut</button>
+    <button type="button" name="button" class="addClass">.addClass</button>
+    <button type="button" name="button" class="before">.before</button>
+    <button type="button" name="button" class="after">.after</button>
+    <button type="button" name="button" class="append">.append</button>
+    <button type="button" name="button" class="html">.html</button>
+    <button type="button" name="button" class="attr">.attr</button>
+    <button type="button" name="button" class="val">.val</button>
+    <button type="button" name="button" class="text">.text</button>
+    <button type="button" name="button" class="data">.data</button>
+  </body>
+</html>

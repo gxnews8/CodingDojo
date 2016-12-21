@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Fun</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        /*$('body').click(function(){
+          $('body').fadeOut(function(){
+            console.log($('body'));
+            alert('fade out');
+          });
+        });*/
+        $('.blah').click(function(){
+          console.log(this);
+          $(this).hide('slow');
+        })
+        $('.Restore').click(function(){
+          $('.blah').show('slow')
+        })
+      });
+    </script>
+    <style media="screen">
+      *body {
+        height: 500px;
+        background: blue;
+      }
+      .blah {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        display: inline-block;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <div class="blah">
+
+    </div>
+    <button type="button" name="button" class="Restore">Restore</button>
+  </body>
+</html>

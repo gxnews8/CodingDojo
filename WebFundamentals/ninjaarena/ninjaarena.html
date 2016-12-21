@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Arena</title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script>
+      $(document).ready(function(){
+        $('.Players, .ninjaLeft, .ninjaRight').hide();
+        $('button').hover(function(){
+          $('body').css({'background': 'url('+$(this).attr('data-alt-src')+') no-repeat', 'background-size': 'cover'});
+          $(this).click(function(){
+            $('.Welcome').fadeOut('slow');
+            $('.Players').fadeIn('slow');
+          })
+        })
+        $('.ninjaA').change(function(){
+          $('.ninjaLeft').fadeIn('slow').html('<img src='+$(this).val()+'>');
+        })
+        $('.ninjaB').change(function(){
+          $('.ninjaRight').fadeIn('slow').html('<img src='+$(this).val()+'>');
+        })
+        $('.fight').click(function(){
+            $('.Players').hide('slow');
+            $('.ninjaLeft').css('float', 'right');
+        })
+      })
+    </script>
+    <style media="screen">
+      body{
+        background: #000;
+      }
+      .Welcome, .Players{
+        margin: 0 auto;
+        margin-top: 20%;
+        padding: 10px;
+        width: 230px;
+        height: 180px;
+        color: #fff;
+        font-size: 13px;
+        border: 5px solid #aaa;
+        border-radius: 5px;
+        background: #ddd;
+      }
+      h1{
+        text-align: center;
+      }
+      button, select, .fight{
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+      }
+      select{
+        height: 32px;
+      }
+      .fight{
+        margin: 0 auto;
+        margin-top: 10px;
+        color: red;
+        width: 50px;
+        text-align: center;
+      }
+      .showNinja{
+        margin: 0 auto;
+      }
+      .ninjaLeft, .ninjaRight{
+        width: 48%;
+        margin: 10px;
+      }
+      .ninjaLeft{
+        float: left;
+      }
+      .ninjaRight{
+        float: right;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Welcome">
+      <h1>Select Arena</h1>
+      <button type="button" data-alt-src="beach.jpg">beach</button>
+      <button type="button" data-alt-src="earth.jpg">planet</button>
+      <button type="button" data-alt-src="dojo.jpg">dojo</button>
+      <button type="button" data-alt-src="forest.jpg">forest</button>
+      <button type="button" data-alt-src="matrix.jpg">matrix</button>
+      <button type="button" data-alt-src="snow.jpg">snow</button>
+    </div>
+    <div class="Players">
+      <h1>Select Players</h1>
+      <form class="form">
+        <select class="ninjaA" name="">
+          <option value="">Select Ninja1</option>
+          <option value="donny.png">Donny</option>
+          <option value="leo.png">Leo</option>
+          <option value="mikey.png">Mikey</option>
+          <option value="raphael.png">Raphael</option>
+        </select>
+        <select class="ninjaB" name="">
+          <option value="">Select Ninja2</option>
+          <option value="donny.png">Donny</option>
+          <option value="leo.png">Leo</option>
+          <option value="mikey.png">Mikey</option>
+          <option value="raphael.png">Raphael</option>
+        </select>
+      </form>
+      <div class="fight">Be Fight!</div>
+    </div>
+    <div class="showNinja">
+      <div class="ninjaLeft"></div>
+      <div class="ninjaRight"></div>
+    </div>
+  </body>
+</html>
