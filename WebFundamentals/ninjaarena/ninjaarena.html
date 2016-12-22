@@ -5,24 +5,82 @@
     <title>Ninja Arena</title>
     <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script>
+      function random_sound()
+      {
+         var arr = ['attack','PrincessBrideSword','punch0','punch1','punch2','punch3','slap','steelsword','swordecho','swordraw','throwknife1','throwknife2'];
+         for(var i = 0; i < arr.length; i++)
+         {
+            x = Math.floor((Math.random()*arr.length));
+            document.getElementById('sounds').innerHTML = '<audio id="sound" src="soundeffects/'+arr[x]+'.mp3"></audio>';
+         }
+      }
       $(document).ready(function(){
+        random_sound();
         $('.Players, .ninjaLeft, .ninjaRight').hide();
         $('button').hover(function(){
+          random_sound();
+          $('#sound')[0].play();
           $('body').css({'background': 'url('+$(this).attr('data-alt-src')+') no-repeat', 'background-size': 'cover'});
           $(this).click(function(){
+            random_sound();
+            $('#sound')[0].play();
             $('.Welcome').fadeOut('slow');
             $('.Players').fadeIn('slow');
           })
         })
         $('.ninjaA').change(function(){
+          random_sound();
+          $('#sound')[0].play();
           $('.ninjaLeft').fadeIn('slow').html('<img src='+$(this).val()+'>');
         })
         $('.ninjaB').change(function(){
+          random_sound();
+          $('#sound')[0].play();
           $('.ninjaRight').fadeIn('slow').html('<img src='+$(this).val()+'>');
         })
         $('.fight').click(function(){
             $('.Players').hide('slow');
-            $('.ninjaLeft').css('float', 'right');
+            $('.Players').css('position', '');
+            //$('.ninjaLeft').css('float', 'right');
+            random_sound();
+            $('#sound')[0].play();
+        })
+        $(document).keypress(function(){
+          random_sound();
+          $('#sound')[0].play();
+          $('.Players').hide('slow');
+          function random_position()
+          {
+             var arr = ['-20', '-15', '-10', '-5', '0', '5', '10', '15', '20', '25', '30', '35', '40', '45'];
+             for(var i = 0; i < arr.length; i++)
+             {
+                x = Math.floor((Math.random()*arr.length));
+                return arr[x];
+             }
+          }
+          $('#sound')[0].play();
+          function ninjaLeft()
+          {
+             var arr = ['donny', 'leo', 'mikey', 'raphael'];
+             for(var i = 0; i < arr.length; i++)
+             {
+                x = Math.floor((Math.random()*arr.length));
+                return arr[x];
+             }
+          }
+          function ninjaRight()
+          {
+             var arr = ['donny', 'leo', 'mikey', 'raphael'];
+             for(var i = 0; i < arr.length; i++)
+             {
+                x = Math.floor((Math.random()*arr.length));
+                return arr[x];
+             }
+          }
+          $('.ninjaLeft').fadeIn('slow').html('<img src='+ninjaLeft()+'.png>');
+          $('.ninjaRight').fadeIn('slow').html('<img src='+ninjaRight()+'.png>');
+          $('.ninjaLeft, .ninjaRight').attr('style', 'margin-top:'+random_position()+'%;transform:rotate('+random_position()+'deg);');
+          $('.ninjaLeft, .ninjaRight').toggleClass('position');
         })
       })
     </script>
@@ -40,7 +98,8 @@
         font-size: 13px;
         border: 5px solid #aaa;
         border-radius: 5px;
-        background: #ddd;
+        background: rgba(0,0,0,0.5);
+        box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.5);
       }
       h1{
         text-align: center;
@@ -66,7 +125,7 @@
       }
       .ninjaLeft, .ninjaRight{
         width: 48%;
-        margin: 10px;
+        *margin: 10px;
       }
       .ninjaLeft{
         float: left;
@@ -74,6 +133,9 @@
       .ninjaRight{
         float: right;
         text-align: right;
+      }
+      .position{
+        float: right;
       }
     </style>
   </head>
@@ -111,5 +173,6 @@
       <div class="ninjaLeft"></div>
       <div class="ninjaRight"></div>
     </div>
+    <div id="sounds"></div>
   </body>
 </html>

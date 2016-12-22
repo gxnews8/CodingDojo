@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon Go</title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script>
+      $(document).ready(function(){
+        for (var i = 1; i < 37; i++) {
+          var pokeapi = 'http://pokeapi.co/media/img/';
+          var images = pokeapi + i + '.png';
+          if(images){
+            $('.left').append('<img id="'+i+'" src='+images+'>');
+          }
+          $('#' + i).on('click', function(){
+            $('.right').html('<img id="'+$(this).attr('id')+'" src='+$(this).attr('src')+'><p>Url: '+$(this).attr('src')+'<p>width: '+$(this).width()+'px<p>Height: '+$(this).height()+'px');
+          })
+        }
+      })
+    </script>
+    <style media="screen">
+      .left, .right{
+        width: 48%;
+        display: inline-block;
+      }
+      .right{
+        height: 500px;
+        padding: 10px;
+        border: 10px solid #ddd;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+
+      </div>
+      <div class="right">
+
+      </div>
+    </div>
+  </body>
+</html>

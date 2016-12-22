@@ -9,7 +9,7 @@
         $('input').focus(function(){
           $(this).val('');
         })
-        $('button').click(function(){
+        $('button').on('click', function(){
           $('thead').append('<tr><td>'+$('.FirstName').val()+'</td><td>'+$('.LastName').val()+'</td><td>'+$('.Email').val()+'</td><td>'+$('.Phone').val()+'</td></tr>');
         })
       })
