@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Your Very Own Weather Forecast App!</title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script>
+      $(document).ready(function() {
+        $('.city').focus(function(){
+          $(this).val('');
+        })
+        $('form').submit(function() {
+            // your code here (build up your url)
+            var weatherApi = "http://api.openweathermap.org/data/2.5/weather";
+            var city = $(".city").val();
+            var key = "f986b26d178516245525a2f0bc233330";
+            $.ajax({
+              url: weatherApi,
+              data: {
+                q: city,
+                appid: key
+              },
+              success: function(result){
+                //$("#weather").append(result);
+                $("#weather").html('<div class="name">'+result.name+'</div><div>Temperature: '+result.main['temp']+'</div>');
+                console.log(result);
+              }
+            });
+            // don't forget to return false so the page doesn't refresh
+            return false;
+        });
+      });
+    </script>
+    <style media="screen">
+      .city{
+        width: 200px;
+      }
+      .weather ul li{
+        list-style: none;
+      }
+      .name{
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form">
+      <input type="text" class="city" value="Seattle">
+      <input type="submit" class="search" value="Search Weather">
+    </form>
+    <div id="weather"></div>
+  </body>
+</html>

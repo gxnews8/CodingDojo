@@ -6,38 +6,58 @@
     <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
     <script>
       $(document).ready(function(){
-        for (var i = 1; i < 37; i++) {
-          var pokeapi = 'http://pokeapi.co/media/img/';
-          var images = pokeapi + i + '.png';
-          if(images){
-            $('.left').append('<img id="'+i+'" src='+images+'>');
-          }
-          $('#' + i).on('click', function(){
-            $('.right').html('<img id="'+$(this).attr('id')+'" src='+$(this).attr('src')+'><p>Url: '+$(this).attr('src')+'<p>width: '+$(this).width()+'px<p>Height: '+$(this).height()+'px');
-          })
+        function pokemonInfo(id, callback) {
+            $.get(id, function(data) {
+                console.log(data, "Got it");
+                $(".name").html("<h1>"+data.name+"</h1>");
+                $(".height").html("<h3>Height: "+data.height+"</h3>");
+                $(".weight").html("<h3>Weight: "+data.weight+"</h3>");
+                $(".types").html("<h3>Types: "+data.types[0].type.name+" / "+data.types[1].type.name+"</h3>");
+            }, "json");
         }
-      })
+        $(function(){
+          $(document).on("click", "img", function(){
+            var id = "http://pokeapi.co/api/v2/pokemon/"+$(this).attr("id");
+            var pic = "http://pokeapi.co/media/img/"+$(this).attr("id")+".png";
+            $(".pic").html("<img src="+pic+" />");
+            console.log(pic);
+            pokemonInfo(id, function(data){
+              console.log("Got id", data);
+            });
+          });
+        });
+        for (var i = 1; i < 152; i++) {
+          var images = "<img id='"+i+"' src='http://pokeapi.co/media/img/"+i+".png' />";
+          $("#main").append(images);
+        }
+      });
     </script>
     <style media="screen">
-      .left, .right{
-        width: 48%;
+      #main{
+        width: 80%;
         display: inline-block;
       }
-      .right{
+      #pokedex{
         height: 500px;
+        width: 300px;
         padding: 10px;
         border: 10px solid #ddd;
+        display: inline-block;
         vertical-align: top;
       }
     </style>
   </head>
   <body>
-    <div class="main">
-      <div class="left">
-
-      </div>
-      <div class="right">
-
+    <div id="wrapper">
+      <div id="main"></div>
+      <div id="pokedex">
+        <div class="right">
+          <div class="name"></div>
+          <div class="pic"><img src=""></div>
+          <div class="height"></div>
+          <div class="weight"></div>
+          <div class="types"></div>
+        </div>
       </div>
     </div>
   </body>

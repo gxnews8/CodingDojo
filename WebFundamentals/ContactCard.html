@@ -10,10 +10,10 @@
           $(this).val('');
         })
         $('button').on('click', function(){
-          $('.list').append('<div class="Card" data-description="'+$('.description').val()+'">'+$('.FirstName').val()+' '+$('.LastName').val()+'</div>');
+          $('.list').append('<div class="Card"><span>'+$('.FirstName').val()+' '+$('.LastName').val()+'</span><span class="desc">'+$('.description').val()+'</span></div>');
           $('.Card').css({'width': '200px', 'height': '120px', 'margin': '10px', 'padding': '10px', 'border': '1px solid #ddd'});
-          $('.Card').on('click', function(){
-            $(this).html($(this).attr('data-description'));
+          $(document).on('click', '.Card', function(){
+            $(this).children().toggle();
           })
         })
       })
@@ -32,6 +32,9 @@
       }
       .left_box{
         vertical-align: top;
+      }
+      .desc{
+        display: none;
       }
     </style>
   </head>
