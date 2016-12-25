@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game of Thrones</title>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script>
+      $(function(){
+        var gameApi = "http://anapioficeandfire.com/api/houses/";
+        $.get(gameApi, function(data){
+          console.log(data);
+          for (var i = 0; i < data.length; i++) {
+            console.log(data[i]);
+            var details = "<ul><li>Name: "+data[i].name+"</li><li>Words: "+data[i].words+"</li><li>Titles: "+data[i].titles+"</li><li>SwornMembers: "+data[i].swornMembers+"</li></ul>";
+            $(".houses").append("<div id='house' data-details='"+details+"'>"+data[i].name+"</div>");
+            $(document).on("click", "#house", function(){
+              $(".details").html("<h3>Houses Details</h3>"+$(this).attr("data-details"));
+            })
+          }
+        }, "json");
+      });
+    </script>
+    <style media="screen">
+      .houses{
+        margin: 0 auto;
+        padding: 10px;
+      }
+      .details{
+        margin: 0 auto;
+        width: 80%;
+        border: 1px solid #ddd;
+        word-wrap: break-word;
+      }
+      .details h3{
+        margin-left: 40px;
+      }
+      .details ul li{
+        list-style: none;
+      }
+      #house{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="houses">
+
+        </div>
+        <div class="details">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

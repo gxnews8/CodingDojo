@@ -24,6 +24,29 @@
                 //$("#weather").append(result);
                 $("#weather").html('<div class="name">'+result.name+'</div><div>Temperature: '+result.main['temp']+'</div>');
                 console.log(result);
+                var _html = "";
+                $.each(result, function(i, val){
+                  _html += "<ul id='"+i+"'>"+i+": "+val+"</ul>";
+                });
+                $(".weather").append(_html);
+                $.each(result.coord, function(k, v){
+                  $("#coord").append("<li id='"+k+"'>"+k+": "+v+"</li>");
+                });
+                $.each(result.weather, function(k1, v1){
+                  $("#weather").append("<li id='"+k1+"'>"+k1+": "+v1+"</li>");
+                });
+                $.each(result.main, function(k2, v2){
+                  $("#main").append("<li id='"+k2+"'>"+k2+": "+v2+"</li>");
+                });
+                $.each(result.wind, function(k3, v3){
+                  $("#wind").append("<li id='"+k3+"'>"+k3+": "+v3+"</li>");
+                });
+                $.each(result.clouds, function(k4, v4){
+                  $("#clouds").append("<li id='"+k4+"'>"+k4+": "+v4+"</li>");
+                });
+                $.each(result.sys, function(k5, v5){
+                  $("#sys").append("<li id='"+k5+"'>"+k5+": "+v5+"</li>");
+                });
               }
             });
             // don't forget to return false so the page doesn't refresh
@@ -37,6 +60,7 @@
       }
       .weather ul li{
         list-style: none;
+        margin-left: 10px;
       }
       .name{
         font-size: 48px;
@@ -48,6 +72,6 @@
       <input type="text" class="city" value="Seattle">
       <input type="submit" class="search" value="Search Weather">
     </form>
-    <div id="weather"></div>
+    <div class="weather"></div>
   </body>
 </html>
