@@ -5,11 +5,14 @@
 <style type="text/css">
 	body{
 		background-color:black;
+		margin: 0px;
+		overflow-x:hidden;
+		overflow-y:hidden;
 	}
 	#container{
 		background: url('background.jpg');
-		width:1000px;
-		height:550px;
+		background-size: cover;
+		height:100%;
 	}
 	#hero{
 		background: url('1942.gif');
@@ -18,14 +21,14 @@
 		height:28px;
 		position:absolute;
 	}
-	#kill{
+	.kill{
 		background: url('1942.gif');
 		background-position: -85px -40px;
 		width:20px;
 		height:20px;
 		position:absolute;
 	}
-	.enemy1{
+	.enemy1 {
 		background: url('1942.gif');
 		background-position: -30px -10px;
 		width:28px;
@@ -43,31 +46,41 @@
 		position:absolute;
 		border:5px solid red;
 		top:20px;
-		left:800px;
+		right: 20px;
 		background-color:white;
 		padding:10px;
 		font-size:30px;
 		font-family: Arial;
 	}
+	#level{
+		font-size:30px;
+		padding: 20px;
+		text-shadow: 0px 3px 10px #fff;
+	}
 </style>
 </head>
 <body>
 	<div id='container'>
+		<div id="level"></div>
 		<div id='hero'></div>
 		<div id='enemies'></div>
 		<div id='bullets'></div>
 	</div>
-	<audio id='vehicle' src="SoundEffects/01-vehicle-4.mp3"></audio>
+	<audio id='vehicle' loop="true" src="SoundEffects/01-vehicle-4.mp3"></audio>
+	<audio id='briefing' loop="true" src="SoundEffects/02-briefing.mp3"></audio>
+	<audio id='menu' loop="true" src="SoundEffects/03-menu.mp3"></audio>
+	<audio id='slaughter' loop="true" src="SoundEffects/04-slaughter-4.mp3"></audio>
+	<audio id='theme' loop="true" src="SoundEffects/05-theme-2.mp3"></audio>
+	<audio id='vehicle1' loop="true" src="SoundEffects/06-vehicle-3.mp3"></audio>
 	<audio id='boom' src="SoundEffects/boom.mp3"></audio>
 	<div id='score'>0</div>
-
 <script>
 var score = 0;
 	var	hero = {
-		x:300,
-		y:400
+		x:document.body.clientWidth/2,
+		y:document.body.clientHeight-28
 	};
-	var enemies = [{x: 50, y: 50}, {x: 250, y: 50}, {x: 450, y: 250}, {x: 150, y: 250}, {x: 250, y: 350}, {x: 450, y: 550}];
+	var enemies = [{x: 50, y: 50}, {x: 100, y: 50}, {x: 150, y: 250}, {x: 200, y: 250}, {x: 250, y: 350}, {x: 300, y: 550},{x: 350, y: 50}, {x: 400, y: 50}, {x: 450, y: 250}, {x: 500, y: 250}, {x: 550, y: 350}, {x: 600, y: 550},{x: 650, y: 50}, {x: 700, y: 50}, {x: 750, y: 250}, {x: 800, y: 250}, {x: 850, y: 350}, {x: 900, y: 550}, {x: 950, y: 350}, {x: 1000, y: 550}];
 	var bullets = [{x: 50, y: 50}, {x: 250, y: 50}, {x: 450, y: 50}];
 
 	function displayHero() {
@@ -87,10 +100,9 @@ var score = 0;
 	function moveEenmies() {
 		for (var i = 0; i < enemies.length; i++) {
 			enemies[i].y += 5;
-			if (enemies[i].y > 540) {
+			if (enemies[i].y > 1000) {
 				enemies[i].y = 0;
-				enemies[i].x = Math.random() * 500;
-
+				enemies[i].x = Math.random() * screen.width;
 			}
 		}
 	}
@@ -118,6 +130,21 @@ var score = 0;
 		document.getElementById('score').innerHTML = score;
 	}
 
+	function displayLevel() {
+		document.getElementById('level').innerHTML = "Level: "+Math.floor(score/1000);
+	}
+
+	function displayMap(map) {
+		switch (score) {
+			case 1000:document.getElementById('container').style['background'] = "url('Manhattan_1942.jpg')";document.getElementById('container').style['background-size'] = "cover";document.getElementById('container').style['height'] ="100%";break;
+			case 2000:document.getElementById('container').style['background'] = "url('SBD_crash_USS_Enterprise_1942.jpg')";document.getElementById('container').style['background-size'] = "cover";document.getElementById('container').style['height'] ="100%";break;
+			case 3000:document.getElementById('container').style['background'] = "url('1942_MEMORIAL_DAY_PARADE.jpg')";document.getElementById('container').style['background-size'] = "cover";document.getElementById('container').style['height'] ="100%";break;
+			case 4000:document.getElementById('container').style['background'] = "url('Statue1942.jpg')";document.getElementById('container').style['background-size'] = "cover";document.getElementById('container').style['height'] ="100%";break;
+			case 5000:document.getElementById('container').style['background'] = "url('dauntless1942.jpg')";document.getElementById('container').style['background-size'] = "cover";document.getElementById('container').style['height'] ="100%";break;
+			case 1000000:alert('You are hero of winer!');break;
+		}
+	}
+
 	function displayKilled() {
 		document.getElementById('enemy1').style['background-position'] = "-84px -40px";
 		document.getElementById('enemy1').style['width'] = "20px";
@@ -132,7 +159,17 @@ var score = 0;
 		displayBullets();
 		detectCollision();
 		displayScore();
-		displaySound('vehicle');
+		displayMap();
+		switch (score) {
+			case 0:displaySound('vehicle');break;
+			case 1000:displaySound('briefing');displayPause('vehicle');break;
+			case 2000:displaySound('menu');displayPause('briefing');break;
+			case 3000:displaySound('slaughter');displayPause('menu');break;
+			case 4000:displaySound('theme');displayPause('slaughter');break;
+			case 5000:displaySound('vehicle1');displayPause('theme');break;
+			//default: displaySound('vehicle');
+		}
+		displayLevel();
 		//displayKilled();
 	}
 
@@ -140,10 +177,11 @@ var score = 0;
 		for (var i = 0; i < bullets.length; i++) {
 			for (var j = 0; j < enemies.length; j++) {
 				if (Math.abs(bullets[i].x - enemies[j].x) < 10 && Math.abs(bullets[i].y - enemies[j].y) < 10) {
-					//document.getElementById('.enemy1').style = displayKilled();
-					displaySound('boom');
+					//var id = document.getElementById('enemy1').id;
+					//document.getElementById(this.getAttribute("id")).className = "kill";
 					console.log('bullet', i, 'and enemy', j, 'collided');
 					score += 10;
+					displaySound('boom');
 				}
 			}
 		}
@@ -155,15 +193,23 @@ var score = 0;
 		//console.log(a.keyCode);
 		if (a.keyCode == 37) {
 			hero.x -= 10;
+			bullets.push({x: hero.x + 8, y: hero.y - 15});
+			displayBullets();
 		}
 		else if (a.keyCode == 39) {
 			hero.x += 10;
+			bullets.push({x: hero.x + 8, y: hero.y - 15});
+			displayBullets();
 		}
 		else if (a.keyCode == 38) {
 			hero.y -= 10;
+			bullets.push({x: hero.x + 8, y: hero.y - 15});
+			displayBullets();
 		}
 		else if (a.keyCode == 40) {
 			hero.y += 10;
+			bullets.push({x: hero.x + 8, y: hero.y - 15});
+			displayBullets();
 		}
 		else if (a.keyCode == 32) {
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
@@ -174,6 +220,9 @@ var score = 0;
 
 	function displaySound(sound) {
 		document.getElementById(sound).play();
+	}
+	function displayPause(sound) {
+		document.getElementById(sound).pause();
 	}
 </script>
 
