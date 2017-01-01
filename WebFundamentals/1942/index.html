@@ -20,6 +20,7 @@
 		width:28px;
 		height:28px;
 		position:absolute;
+		transform: rotate(0deg);
 	}
 	.kill{
 		background: url('1942.gif');
@@ -80,7 +81,7 @@ var score = 0;
 		x:document.body.clientWidth/2,
 		y:document.body.clientHeight-28
 	};
-	var enemies = [{x: 50, y: 50}, {x: 100, y: 50}, {x: 150, y: 250}, {x: 200, y: 250}, {x: 250, y: 350}, {x: 300, y: 550},{x: 350, y: 50}, {x: 400, y: 50}, {x: 450, y: 250}, {x: 500, y: 250}, {x: 550, y: 350}, {x: 600, y: 550},{x: 650, y: 50}, {x: 700, y: 50}, {x: 750, y: 250}, {x: 800, y: 250}, {x: 850, y: 350}, {x: 900, y: 550}, {x: 950, y: 350}, {x: 1000, y: 550}];
+	var enemies = [{x: 50, y: 50}, {x: 100, y: 50}, {x: 150, y: 250}, {x: 200, y: 250}, {x: 250, y: 350}, {x: 300, y: 550},{x: 350, y: 50}, {x: 400, y: 50}, {x: 450, y: 250}, {x: 500, y: 250}, {x: 550, y: 350}, {x: 600, y: 550},{x: 650, y: 50}, {x: 700, y: 50}, {x: 750, y: 250}, {x: 800, y: 250}, {x: 850, y: 350}, {x: 900, y: 550}, {x: 950, y: 350}, {x: 1000, y: 550},{x: 50, y: 100}, {x: 100, y: 150}, {x: 150, y: 200}, {x: 200, y: 250}, {x: 250, y: 300}, {x: 300, y: 350},{x: 350, y: 400}, {x: 400, y: 450}, {x: 450, y: 500}, {x: 550, y: 250}, {x: 600, y: 350}, {x: 660, y: 550},{x: 650, y: 700}, {x: 700, y: 750}, {x: 750, y: 800}, {x: 800, y: 850}, {x: 850, y: 900}, {x: 900, y: 950}, {x: 950, y: 1000}, {x: 1000, y: 1000}];
 	var bullets = [{x: 50, y: 50}, {x: 250, y: 50}, {x: 450, y: 50}];
 
 	function displayHero() {
@@ -91,7 +92,7 @@ var score = 0;
 	function displayEnemies() {
 		var output = '';
 		for (var i = 0; i < enemies.length; i++) {
-			output += "<div class='enemy1' style='top:"+enemies[i].y+"px; left:"+enemies[i].x+"px'></div>";
+			output += "<div id='"+enemies[i].y+"' class='enemy1' style='top:"+enemies[i].y+"px; left:"+enemies[i].x+"px'></div>";
 		}
 		document.getElementById('enemies').innerHTML = output;
 		//console.log(output);
@@ -109,7 +110,7 @@ var score = 0;
 
 	function moveBullets() {
 		for (var i = 0; i < bullets.length; i++) {
-			bullets[i].y -= 5;
+			bullets[i].y -= 10;
 			if (bullets[i].y < 0) {
 				bullets[i] = bullets[bullets.length - 1];
 				bullets.pop();
@@ -120,7 +121,7 @@ var score = 0;
 	function displayBullets() {
 		var output = '';
 		for (var i = 0; i < bullets.length; i++) {
-			output += "<div class='bullet' style='top:"+bullets[i].y+"px; left:"+bullets[i].x+"px;'></div>";
+			output += "<div class='bullet' style='top:"+(bullets[i].y-i)+"px; left:"+(bullets[i].x-i)+"px;'></div><div class='bullet' style='top:"+bullets[i].y+"px; left:"+bullets[i].x+"px;'></div><div class='bullet' style='top:"+(bullets[i].y+i)+"px; left:"+(bullets[i].x+i)+"px;'></div><div class='bullet' style='top:"+(bullets[i].y-i*2)+"px; left:"+(bullets[i].x-i*2)+"px;'></div><div class='bullet' style='top:"+(bullets[i].y+i*2)+"px; left:"+(bullets[i].x+i*2)+"px;'></div>";
 		}
 		document.getElementById('bullets').innerHTML = output;
 		//console.log(output);
@@ -145,10 +146,12 @@ var score = 0;
 		}
 	}
 
-	function displayKilled() {
-		document.getElementById('enemy1').style['background-position'] = "-84px -40px";
-		document.getElementById('enemy1').style['width'] = "20px";
-		document.getElementById('enemy1').style['height'] = "20px";
+	function displayKilled(id) {
+		for (var i = 0; i < enemies.length; i++) {
+			document.getElementById(enemies[i].y).style['background-position'] = "-84px -40px";
+			document.getElementById(enemies[i].y).style['width'] = "20px";
+			document.getElementById(enemies[i].y).style['height'] = "20px";
+		}
 	}
 
 	function gameLoop() {
@@ -170,18 +173,16 @@ var score = 0;
 			//default: displaySound('vehicle');
 		}
 		displayLevel();
-		//displayKilled();
 	}
 
 	function detectCollision() {
 		for (var i = 0; i < bullets.length; i++) {
 			for (var j = 0; j < enemies.length; j++) {
 				if (Math.abs(bullets[i].x - enemies[j].x) < 10 && Math.abs(bullets[i].y - enemies[j].y) < 10) {
-					//var id = document.getElementById('enemy1').id;
-					//document.getElementById(this.getAttribute("id")).className = "kill";
-					console.log('bullet', i, 'and enemy', j, 'collided');
+					displayKilled(enemies[j].y);
 					score += 10;
 					displaySound('boom');
+					enemies[j].y = -100;
 				}
 			}
 		}
@@ -192,26 +193,43 @@ var score = 0;
 	document.onkeydown = function(a){
 		//console.log(a.keyCode);
 		if (a.keyCode == 37) {
+			document.getElementById('hero').style['transform'] = "rotate(30deg)";
 			hero.x -= 10;
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
 			displayBullets();
+			if (hero.x < 10) {
+				hero.x = document.body.clientWidth;
+			}
 		}
 		else if (a.keyCode == 39) {
+			document.getElementById('hero').style['transform'] = "rotate(-30deg)";
 			hero.x += 10;
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
 			displayBullets();
+			if (hero.x > document.body.clientWidth) {
+				hero.x = 10;
+			}
 		}
 		else if (a.keyCode == 38) {
+			document.getElementById('hero').style['transform'] = "rotate(0deg)";
 			hero.y -= 10;
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
 			displayBullets();
+			if (hero.y < 28) {
+				hero.y = document.body.clientHeight;
+			}
 		}
 		else if (a.keyCode == 40) {
+			document.getElementById('hero').style['transform'] = "rotate(0deg)";
 			hero.y += 10;
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
 			displayBullets();
+			if (hero.y > document.body.clientHeight-28) {
+				hero.y = document.body.clientHeight-28;
+			}
 		}
 		else if (a.keyCode == 32) {
+			document.getElementById('hero').style['transform'] = "rotate(0deg)";
 			bullets.push({x: hero.x + 8, y: hero.y - 15});
 			displayBullets();
 		}
