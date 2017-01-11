@@ -1,0 +1,24 @@
+Installation
+Make sure these are all installed:
+
+Atom - https://atom.io/
+MAMP - https://www.mamp.info/en/
+MySQL - https://dev.mysql.com/downloads/workbench/
+Git - https://git-scm.com/downloads
+NodeJS - https://nodejs.org/en/
+Workbench - http://dev.mysql.com/downloads/workbench/#downloads
+
+SELECT Basics: http://sqlzoo.net/wiki/SQLZOO:SELECT_basics
+SELECT name: http://sqlzoo.net/wiki/SELECT_names
+SELECT from World: http://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial
+http://www.2cto.com/database/201601/484966.html
+http://blog.csdn.net/bestallen/article/details/53677369
+http://www.cnblogs.com/prefect/p/5746624.html
+
+http://www.w3schools.com/sql/func_date_format.asp
+http://pythex.org/
+
+C:\Users\Mercer Island\Documents\GitHub\CodingDojo\Python\myEnvironments\py2FlaskEnv\Scripts
+
+1. run env()
+2. python <filename>

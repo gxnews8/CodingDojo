@@ -58,6 +58,24 @@
 		padding: 20px;
 		text-shadow: 0px 3px 10px #fff;
 	}
+	#playpause{
+		position:absolute;
+		border:1px solid red;
+		bottom:20px;
+		right: 20px;
+		background-color:white;
+		padding:3px;
+		text-shadow: 0px 0px 5px blue;
+		font-family: Arial;
+		cursor: pointer;
+	}
+	#playpause:hover{
+		border:1px solid white;
+		cursor: pointer;
+		background-color:red;
+		text-shadow: 0px 0px 5px white;
+		color: white;
+	}
 </style>
 </head>
 <body>
@@ -75,6 +93,7 @@
 	<audio id='vehicle1' loop="true" src="SoundEffects/06-vehicle-3.mp3"></audio>
 	<audio id='boom' src="SoundEffects/boom.mp3"></audio>
 	<div id='score'>0</div>
+	<div id='playpause' onClick='playPause()' title='toggle play or mute sound.'>Mute</div>
 <script>
 var score = 0;
 	var	hero = {
@@ -147,11 +166,9 @@ var score = 0;
 	}
 
 	function displayKilled(id) {
-		for (var i = 0; i < enemies.length; i++) {
-			document.getElementById(enemies[i].y).style['background-position'] = "-84px -40px";
-			document.getElementById(enemies[i].y).style['width'] = "20px";
-			document.getElementById(enemies[i].y).style['height'] = "20px";
-		}
+		document.getElementById(id).style['background-position'] = "-84px -40px";
+		document.getElementById(id).style['width'] = "20px";
+		document.getElementById(id).style['height'] = "20px";
 	}
 
 	function gameLoop() {
@@ -165,11 +182,11 @@ var score = 0;
 		displayMap();
 		switch (score) {
 			case 0:displaySound('vehicle');break;
-			case 1000:displaySound('briefing');displayPause('vehicle');break;
-			case 2000:displaySound('menu');displayPause('briefing');break;
-			case 3000:displaySound('slaughter');displayPause('menu');break;
-			case 4000:displaySound('theme');displayPause('slaughter');break;
-			case 5000:displaySound('vehicle1');displayPause('theme');break;
+			case 1000:displaySound('briefing');displayPause('vehicle');muted();break;
+			case 2000:displaySound('menu');displayPause('briefing');muted();break;
+			case 3000:displaySound('slaughter');displayPause('menu');muted();break;
+			case 4000:displaySound('theme');displayPause('slaughter');muted();break;
+			case 5000:displaySound('vehicle1');displayPause('theme');muted();break;
 			//default: displaySound('vehicle');
 		}
 		displayLevel();
@@ -182,6 +199,7 @@ var score = 0;
 					displayKilled(enemies[j].y);
 					score += 10;
 					displaySound('boom');
+					bullets[i].y = -100;
 					enemies[j].y = -100;
 				}
 			}
@@ -241,6 +259,35 @@ var score = 0;
 	}
 	function displayPause(sound) {
 		document.getElementById(sound).pause();
+	}
+	function playPause(){
+		var level = Math.floor(score/1000);
+		var status = document.getElementById('playpause');
+		if(status.innerHTML == 'Mute'){
+			status.innerHTML = 'Play';
+			switch (level) {
+			case 0:document.getElementById('vehicle').muted = true;break;
+			case 1:document.getElementById('briefing').muted = true;break;
+			case 2:document.getElementById('menu').muted = true;break;
+			case 3:document.getElementById('slaughter').muted = true;break;
+			case 4:document.getElementById('theme').muted = true;break;
+			case 5:document.getElementById('vehicle1').muted = true;break;
+			}
+		}
+		else{
+			status.innerHTML = 'Mute';
+			switch (level) {
+			case 0:document.getElementById('vehicle').muted = false;break;
+			case 1:document.getElementById('briefing').muted = false;break;
+			case 2:document.getElementById('menu').muted = false;break;
+			case 3:document.getElementById('slaughter').muted = false;break;
+			case 4:document.getElementById('theme').muted = false;break;
+			case 5:document.getElementById('vehicle1').muted = false;break;
+			}
+		}
+	}
+	function muted() {
+		document.getElementById('playpause').innerHTML = 'Mute';
 	}
 </script>
 
