@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Eidt comment</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <font class="alert">{{message}}</font>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% for comment in comments: %}
+    <form action="/edit_comment/{{ comment['id'] }}" method='POST'>
+      <input type="hidden" name="comment_id" value="{{ comment['id'] }}">
+      <input type="hidden" name="editby" value="{{ session['first_name'] }}">
+      <h3><label for="comment">Edit a comment:</label></h3>
+      <p><h5>{{ comment['first_name'] }}<font class="gray"> posted at {{ comment['updated_at'] }}</font></h5></p>
+      <textarea name="comment" rows="8" cols="80">{{ comment['comment'] }}</textarea>
+      <div class="post">
+        <input type="submit" value="Update comment">
+      </div>
+    </form>
+    {% endfor %}
+  </body>
+</html>

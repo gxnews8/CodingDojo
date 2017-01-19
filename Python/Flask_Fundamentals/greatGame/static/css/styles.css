@@ -1,0 +1,39 @@
+* {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+h1 {
+	margin: auto;
+}
+p {
+	margin: auto;
+	margin: 10px;
+}
+
+h2 {
+	margin: auto auto;
+	vertical-align: middle;
+}
+
+#theBox {
+	max-width: 200px;
+	height: 100px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.yellow {
+	background-color: yellow;
+	object-position: top;
+}
+
+.red {
+	background-color: red;
+}
+
+.green {
+	background-color: green;
+}

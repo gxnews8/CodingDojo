@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Edit Friend</title>
+</head>
+<body>
+  <h1>Edit a Friend</h1>
+  {% for friend in one_friend: %}
+  <form action='/update_friend/{{ friend['id'] }}' method='POST'>
+    <input type="hidden" name="updated_at" value="{{ friend['updated_at'] }}">
+    <p><label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ friend['first_name'] }}"></label></p>
+    <p><label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ friend['last_name'] }}"></label></p>
+    <p><label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{ friend['occupation'] }}"></label></p>
+    <input type="submit" value="Update">
+  </form>
+  {% endfor %}
+</body>
+</html>

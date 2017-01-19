@@ -5,11 +5,7 @@ app.secret_key = 'my_secret_key'
 
 @app.route('/')
 def index():
-    return render_template('index.html', name='Awesome Python!')
-
-@app.route('/success')
-def success():
-    return render_template('success.html')
+    return render_template('index.html', name='Welcome to Ninjias')
 
 @app.route('/ninjas')
 def ninjas():

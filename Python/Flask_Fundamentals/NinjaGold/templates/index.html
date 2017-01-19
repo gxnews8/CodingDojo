@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="main">
+      <div class="">
+        Your Golds: <input type="text" name="golds" value="{{ session['golds'] }}" style="color:{{session['color']}}">
+      </div>
+      <div class="form">
+        <h1>Farm</h1>
+        <h3>(earns 10 - 20 golds)</h3>
+        <form class="" action="/process_money" method="post">
+          <input type="hidden" name="building" value="farm">
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </div>
+      <div class="form">
+        <h1>Cave</h1>
+        <h3>(earns 5 - 10 golds)</h3>
+        <form class="" action="/process_money" method="post">
+          <input type="hidden" name="building" value="cave">
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </div>
+      <div class="form">
+        <h1>House</h1>
+        <h3>(earns 2 - 5 golds)</h3>
+        <form class="" action="/process_money" method="post">
+          <input type="hidden" name="building" value="house">
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </div>
+      <div class="form">
+        <h1>Casino</h1>
+        <h3>(earns/takes 0 - 50 golds)</h3>
+        <form class="" action="/process_money" method="post">
+          <input type="hidden" name="building" value="casino">
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </div>
+      <div class="">
+        Activities:
+        <textarea name="name" rows="8" cols="80" style="color: {{session['activitiesColor']}}">{{ session['activities'] }}</textarea>
+        <form action="/reset" method="post"><input type="submit" value="Reset"></form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Update email</title>
+</head>
+<body>
+  <h1>Update a email</h1>
+  <form action='/update_email' method='POST'>
+    {% for email in one_email: %}
+    <input type="hidden" name="" value="{{ email['id'] }}">
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ email['first_name'] }}"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ email['last_name'] }}"></label>
+    <label for="email">email:<input type="text" name="email" id="email" value="{{ email['email'] }}"></label>
+    {% endfor %}
+    <input type="submit" value="Update">
+  </form>
+</body>
+</html>

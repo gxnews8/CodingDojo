@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>Show email</title>
+</head>
+<body>
+  <h1>Show a email</h1>
+  {% for email in one_email: %}
+     <p>ID: {{ email['id'] }}</p>
+     <p>First Name: {{ email['first_name'] }}</p>
+     <p>Last Name: {{ email['last_name'] }}</p>
+     <p>email: {{ email['email'] }}</p>
+     <p><a href="/emails/{{ email['id'] }}">Show/Update</a> | <a href="/remove_email/{{ email['id'] }}">Delete</a></p>
+  <form action='/update_email/{{ email['id'] }}' method='POST'>
+    <input type="hidden" name="" value="{{ email['id'] }}">
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ email['first_name'] }}"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ email['last_name'] }}"></label>
+    <label for="email">email:<input type="text" name="email" id="email" value="{{ email['email'] }}"></label>
+    <input type="submit" value="Update">
+  </form>
+  <form class="" action="/remove_email/{{ email['id'] }}" method="post">
+    <input type="submit" value="Delete">
+  </form>
+  {% endfor %}
+</body>
+</html>

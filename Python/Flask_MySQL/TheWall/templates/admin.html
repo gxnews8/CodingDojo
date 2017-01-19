@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  </head>
+  <body>
+    {% if session['level'] == 9 %}
+    <div class="admin">
+      <h1>Admin</h1>
+      <font class="alert">Level:  {{session['level']}}</font>
+      <a href="/">Home</a> <a href="/logOut">Log Out</a>
+      <dl class="">
+        <dt><h1>Manage Users</h1></dt>
+        {%for users in users_all%}
+        <dd><a href="/switch/{{users['id']}}/{{users['level']}}/{{users['first_name']}}">{{users['first_name']}}</a> <a href="/admin/{{users['id']}}">Edit</a> <a href="/removeAdmin/{{users['id']}}">Remove</a></dd>
+        {%endfor%}
+      </dl>
+    </div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <font class="alert">{{message}}</font>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="admin">
+      {% for user in users: %}
+      <form class="" action="/admin/{{user['id']}}" method="post">
+        <dl class="">
+          <dt><h1>User Information</h1></dt>
+          <dd>User ID: <input type="text" name="id" value="{{user['id']}}" disabled></dd>
+          <dd>Fisr Name: <input type="text" name="first_name" value="{{user['first_name']}}" disabled></dd>
+          <dd>Lsst Name: <input type="text" name="last_name" value="{{user['last_name']}}" disabled></dd>
+          <dd>E-mail: <input type="text" name="email" value="{{user['email']}}" disabled></dd>
+          <dd>Password: <input type="password" name="password"><input type="hidden" name="hiddenPassword" value="{{user['password']}}"></dd>
+          <dd>Salt: <input type="text" name="salt" value="{{user['salt']}}" disabled></dd>
+          <dd>Hash: <input type="text" name="pw_hash" value="{{user['pw_hash']}}" disabled></dd>
+          <dd>Level: <select class="" name="level">
+            <option value="{{user['level']}}">{{user['level']}}</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select></dd>
+          <dd>Create at: <input type="text" name="created_at" value="{{user['created_at']}}" disabled></dd>
+          <dd>Update at: <input type="text" name="updated_at" value="{{user['updated_at']}}" disabled></dd>
+          <dt><h1>All messages</h1></dt>
+          {% for message in messages: %}
+          <dd><textarea name="message" rows="8" cols="80">{{message['message']}}</textarea></dd>
+          {% endfor %}
+          <dt><h1>All comments</h1></dt>
+          {% for comment in comments: %}
+          <dd><textarea name="comment" rows="8" cols="80">{{comment['comment']}}</textarea></dd>
+          {% endfor %}
+          <dd><input type="submit" value="Submit"></dd>
+        </dl>
+      </form>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </body>
+</html>

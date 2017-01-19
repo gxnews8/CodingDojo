@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MD5</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action='/login' method='POST'>
+      <p><label for="email">Email:<input type="text" name="email" id="email"></label></p>
+      <p><label for="password">PassWord:<input type="text" name="password" id="password"></label></p>
+      <input type="submit" value="Login">
+    </form>
+  </body>
+</html>

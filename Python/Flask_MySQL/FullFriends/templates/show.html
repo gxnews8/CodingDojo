@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Show Friend</title>
+  <script src="{{url_for('static', filename='js/remove.js')}}" charset="utf-8"></script>
+</head>
+<body>
+  <h1>Show a Friend</h1>
+  {% for friend in one_friend: %}
+  <form id='remove' action="/remove_friend/{{ friend['id'] }}" method="post">
+     <p>ID: {{ friend['id'] }}{%if updated_at != created_at%} (Updated at {{updated_at}}){%endif%}</p>
+     <p>First Name: {{ friend['first_name'] }}</p>
+     <p>Last Name: {{ friend['last_name'] }}</p>
+     <p>Occupation: {{ friend['occupation'] }}</p>
+     <p><a href="/edit_friends/{{ friend['id'] }}">Edit</a> | <a href="javascript:;" onclick="remove()">Remove</a></p>
+     <hr>
+  </form>
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Dojo Survey</title>
+  <link rel="stylesheet" href={{url_for('static', filename="css/styles.css")}}>
+</head>
+<body>
+
+  <div class="container result-page">
+    <h1>Submitted Info</h1>
+
+    <div class="data-row">
+      <div class="desc">Name:</div>
+      <div class="info">{{data.name}}</div>
+    </div>
+
+    <div class="data-row">
+      <div class="desc">Dojo Location:</div>
+      <div class="info">{{data.location}}</div>
+    </div>
+
+    <div class="data-row">
+      <div class="desc">Favorite Language:</div>
+      <div class="info">{{data.favlang}}</div>
+    </div>
+
+    <div class="data-row">
+      <div class="desc">Comment:</div>
+      <div class="info">{{data.comment}}</div>
+    </div>
+  </div>
+
+</body>

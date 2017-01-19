@@ -1,0 +1,39 @@
+<html>
+    <head>
+       <title>Dojo Survey</title>
+    </head>
+    <body>
+      <div class="">
+        <form action='/survey' method='post'>
+            <div class="">
+              Your Name: <input type='text' name='name' value=''>
+            </div>
+            <div class="">
+              Dojo Location:
+              <select class="" name="location">
+                <option value=""></option>
+                <option value="San Jose">San Jose</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Bellevue">Bellevue</option>
+              </select>
+            </div>
+            <div class="">
+              Favorite Language:
+              <select class="" name="language">
+                <option value=""></option>
+                <option value="Python">Python</option>
+                <option value="Javascript">Javascript</option>
+                <option value="Swift">Swift</option>
+              </select>
+            </div>
+            <div class="">
+              Comment (optional):<p>
+              <textarea name="name" rows="8" cols="8"></textarea>
+            </div>
+            <div class="">
+              <button type="submit" name="button">Button</button>
+            </div>
+        </form>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title>Show Friend</title>
+</head>
+<body>
+  <h1>Show a Friend</h1>
+  {% for friend in one_friend: %}
+     <p>ID: {{ friend['id'] }}</p>
+     <p>First Name: {{ friend['first_name'] }}</p>
+     <p>Last Name: {{ friend['last_name'] }}</p>
+     <p>Occupation: {{ friend['occupation'] }}</p>
+     <p><a href="/friends/{{ friend['id'] }}">Show/Update</a> | <a href="/remove_friend/{{ friend['id'] }}">Delete</a></p>
+  <form action='/update_friend/{{ friend['id'] }}' method='POST'>
+    <input type="hidden" name="" value="{{ friend['id'] }}">
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ friend['first_name'] }}"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ friend['last_name'] }}"></label>
+    <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{ friend['occupation'] }}"></label>
+    <input type="submit" value="Update">
+  </form>
+  <form class="" action="/remove_friend/{{ friend['id'] }}" method="post">
+    <input type="submit" value="Delete">
+  </form>
+  {% endfor %}
+</body>
+</html>

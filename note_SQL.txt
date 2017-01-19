@@ -1,0 +1,15 @@
+﻿CRUD
+C Create
+R Read/rewrite
+U Update
+D Delete
+
+SQL Query
+Insert name, a-z, 0-9 INTO states Values("WA", "Seattle", NOW());
+
+Reguest Post, Get
+
+Select name From states;
+Update states Set column_name =value Where id = {id};
+Delete From states Where id = {id}
+Select cities, name From cities JOIN states ON cities.state-id = states.id WHERE states.name = 'NY';

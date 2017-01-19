@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>sign Up</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  </head>
+  <body>
+    <h1>sign Up</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <font class="alert">{{message}}</font>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="sign">
+      <form action='/signUp' method='POST'>
+        <p><label for="first_name">First_Name: <input type="text" name="first_name" id="first_name"></label></p>
+        <p><label for="last_name">Last_Name: <input type="text" name="last_name" id="last_name"></label></p>
+        <p><label for="email">E-mail: <input type="text" name="email" id="email"></label></p>
+        <p><label for="password">Password: <input type="password" name="password" id="password"></label></p>
+        <p><label for="re-password">Re-Password: <input type="password" name="re-password" id="re-password"></label></p>
+        <input type="submit" value="Sign Up"> Had an account? <a href="/signIn">Sign in now</a>
+      </form>
+    </div>
+  </body>
+</html>

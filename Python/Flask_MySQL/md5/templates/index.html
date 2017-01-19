@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MD5</title>
+  </head>
+  <body>
+    <h1>Add a User</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action='/users/create' method='POST'>
+      <p><label for="username">User Name:<input type="text" name="username" id="username"></label></p>
+      <p><label for="email">Email:<input type="text" name="email" id="email"></label></p>
+      <p><label for="password">PassWord:<input type="text" name="password" id="password"></label></p>
+      <input type="submit" value="Add">
+    </form>
+    <a href="/welcome">Go to Login</a>
+    <!-- we can use the line below to see all of our data in our template -->
+    <h1>These are all users!</h1>
+    <!-- with all the data we can then construct a more structured output -->
+    {% for user in all_users: %}
+    <p>ID: {{ user['id'] }}</p>
+    <p>UserName: {{ user['username'] }}</p>
+    <p>Email: {{ user['email'] }}</p>
+    <p>PassWord: {{ user['password'] }}</p>
+    <p>Salt: {{ user['salt'] }}</p>
+    <hr>
+    {% endfor %}
+  </body>
+</html>
