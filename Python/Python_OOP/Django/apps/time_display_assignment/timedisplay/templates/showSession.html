@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>showSession</title>
+    {%load staticfiles%}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+  </head>
+  <body>
+    You was post >> {{request.session.name}}
+    <div class="">
+      <a href="/">Go back</a>
+    </div>
+  </body>
+</html>

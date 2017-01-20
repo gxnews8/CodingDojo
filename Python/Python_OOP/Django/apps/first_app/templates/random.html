@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random</title>
+    {%load staticfiles%}
+    {%load 'css/style.css'%}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        Random Word (attempt #{{counter}})
+        <div class="random">
+          <form class="" action="/random" method="post">
+            <input type="text" name="random" value="{{random}}">
+            <input type="sbumit" value="Generate">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
