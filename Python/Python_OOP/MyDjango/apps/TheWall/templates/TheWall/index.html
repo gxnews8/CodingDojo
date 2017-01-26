@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'TheWall/css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <div class="logo">
+            <h1>Coding Dojo Wall</h1>
+          </div>
+          <div class="login">
+            {% if request.session.user_id %}
+            Welcome {{ first_name }}
+            <a href="{% url 'TheWall:logOut' %}">Log Out</a>
+            {% else %}
+            <a href="{% url 'TheWall:signIn' %}">Sign In</a> <a href="{% url 'TheWall:signUp' %}">Sign Up</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="clear"></div>
+        <div class="content">
+          <h2>Post a message</h2>
+          <form class="" action="{% url 'TheWall:add_message' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ request.session.user_id }}">
+            <textarea name="message" rows="8" cols="80"></textarea>
+            <input type="submit" name="" value="Post a message">
+          </form>
+        </div>
+        <div class="message">
+          {% for message in messages %}
+          <h3>{{ message.user_id.first_name }} {{ message.user_id.last_name }} <font class="datetime">- {{ message.updated_at }}</font></h3>
+          {{ message.message }}
+          <div class="comment">
+            {% for comment in comments %}
+            <h3>{{ comment.user_id.first_name }} {{ comment.user_id.last_name }} <font class="datetime">- {{ comment.updated_at }}</font></h3>
+            {{ comment.comment }}
+            <div class="">
+              <h2>Post a comment</h2>
+              <form class="" action="{% url 'TheWall:add_comment' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ request.session.user_id }}">
+                <input type="hidden" name="message_id" value="{{ message.message_id }}">
+                <textarea name="comment" rows="4" cols="80"></textarea>
+                <input type="submit" name="" value="Post a comment">
+              </form>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+        <h1>All Users</h1>
+        <div class="user">
+          {% for user in users %}
+          <h3>{{ user.first_name }} {{ user.last_name }} <font class="datetime">- {{ user.updated_at }}</font></h3>
+          {{ user.email }}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

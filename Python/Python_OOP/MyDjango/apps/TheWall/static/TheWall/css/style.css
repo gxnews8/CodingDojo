@@ -1,0 +1,62 @@
+a{
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: green;
+  background: #eee;
+  border: 1px solid #ddd;
+  text-decoration: none;
+}
+a:hover{
+  color: #fff;
+  background: #ddd;
+  border: 1px solid #aaa;
+}
+td{
+  padding: 10px;
+}
+.wrapper{
+
+}
+.main{
+  padding: 10px;
+}
+.head{
+
+}
+.clear{
+  clear: both;
+}
+.logo{
+  width: 40%;
+  float: left;
+}
+.login{
+  width: 40%;
+  float: right;
+  text-align: right;
+}
+.content{
+
+}
+.message, .comment, .user{
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+textarea{
+  width: 98%;
+  padding: 5px 10px;
+  margin: 10px 0px;
+  border-radius: 4px;
+}
+input{
+  padding: 5px 10px;
+  margin: 10px 0px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+}
+.datetime{
+  color: #aaa;
+  font-size: 12px;
+}

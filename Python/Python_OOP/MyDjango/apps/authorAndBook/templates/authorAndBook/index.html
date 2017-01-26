@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Aothor And Book</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <h1>All Authors</h1>
+        {% if all_authors %}
+          <ul>
+            {% for author in authors %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div class="author">
+          <form class="" action="/authorAndBook/Add_Author" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" value="">
+            <input type="submit" name="" value="Add Book">
+          </form>
+        </div>
+        <h1>All Books</h1>
+        {{ all_books }}
+        <div class="book">
+          <form class="" action="/authorAndBook/Add_Book" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" value="">
+            <select class="" name="author">
+              {{ name }}
+              <option value=""></option>
+            </select>
+            <input type="submit" name="" value="Add Book">
+          </form>
+        </div>
+        <h1>All Publishers</h1>
+        {{ all_publishers }}
+        <div class="book">
+          <form class="" action="{% url 'publishers:book_to_publisher' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" value="">
+            <select class="" name="author">
+              {% for book in all_books %}
+              <option value="{{ book.id }}">{{ book.title }}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" name="" value="Add Publisher">
+          </form>
+        </div>
+        <h1>All Publishers</h1>
+        {{ all_publishers }}
+        <div class="book">
+          <form class="" action="{% url 'publishers:book_to_publisher' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" value="">
+            <h1>Add book to Publisher</h1>
+            <select class="" name="Publisher">
+              {% for publisher in all_publishers %}
+              <option value=""></option>
+              {% endfor %}
+            </select>
+            <select class="" name="author">
+              {% for book in all_books %}
+              <option value="{{ book.id }}">{{ book.title }}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" name="" value="Add Publisher">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

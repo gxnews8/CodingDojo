@@ -18,7 +18,14 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
     url(r'^polls/', include('polls.urls', namespace="polls")),#1/20/17 by King
-    # url(r'^debug/', include('apps.debug.urls')),#1/20/17 by King
-    # url(r'^randomworld/', include('apps.randomworld.urls')),#1/20/17 by King
+    url(r'^randomword/', include('apps.first_app.urls')),
+    url(r'^survey_form/', include('apps.survey_form.urls')),
+    url(r'^authorAndBook/', include('apps.authorAndBook.urls')),
+    url(r'^ninjia/', include('apps.ninjia.urls')),
+    url(r'^ninjiaGold/', include('apps.ninjiaGold.urls', namespace='ninjiaGold')),
+    url(r'^publishers/', include('apps.publishers.urls', namespace='publishers')),#1/24/17 by King
+    url(r'^TheWall/', include('apps.TheWall.urls', namespace='TheWall')),
+    url(r'^leagues/', include('apps.leagues.urls', namespace='leagues')),
 ]

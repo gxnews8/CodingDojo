@@ -1,0 +1,32 @@
+.wrapper{
+
+}
+.main{
+
+}
+.golds{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: xx-large;
+}
+.ninjia, .activities{
+  margin: auto;
+  width: 80%;
+}
+.places{
+  width: 22%;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+textarea{
+  width: 95%;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: xx-large;
+}
+input{
+  padding: 5px 10px;
+}

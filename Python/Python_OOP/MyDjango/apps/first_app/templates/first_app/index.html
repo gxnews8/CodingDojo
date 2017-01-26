@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>first_app</title>
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="random2">
+          <form action="/randomword/index" method="post">
+            {% csrf_token %}
+            <h5>Random Word (Attempt #{{ attempt }})</h5>
+            <h1>{{ randomword }}</h1>
+            <input type="hidden" name="attempt" value="{{ attempt }}">
+            <input type="submit" name="" value="Generate">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sports Leagues</title>
+	</head>
+	<body>
+		<h1>Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+				<li>Name: {{league.name}} | Sport: {{league.sport}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Teams</h1>
+		<ol>
+			{% for team in teams %}
+				<li>Location: {{team.location}} | Team_name: {{team.team_name}} | League: {{team.league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h1>Players</h1>
+		<ol>
+			{% for player in players %}
+				<li>Full Name: {{player.first_name}} . {{player.last_name}} | Team_name: {{player.curr_team.team_name}}</li>
+			{% endfor %}
+		</ol>
+	</body>
+</html>

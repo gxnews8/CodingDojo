@@ -1,0 +1,13 @@
+.wrapper{
+
+}
+.main{
+  margin: auto;
+}
+.random2{
+  margin: auto;
+  width: 300px;
+  height: 100px;
+  border: 1px solid #ddd;
+  text-align: center;
+}

@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wm6-=5cxmq6n$57)dgnb2vgk8a#24j#2rp972bno8@(d73n_w1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.186.52.78']
 
 
 # Application definition
@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',#1/19/17 by King
-    # 'apps.debug',#1/20/17 by King
-    # 'apps.randomworld',#1/20/17 by King
+    'apps.first_app',
+    'apps.survey_form',
+    'apps.authorAndBook',
+    'apps.ninjia',
+    'apps.ninjiaGold',
+    'apps.publishers',#1/23/17 by King
+    'apps.TheWall',#1/24/17 by King
+    'apps.leagues',#1/24/17 by King
 ]
 
 MIDDLEWARE = [
@@ -121,3 +127,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
