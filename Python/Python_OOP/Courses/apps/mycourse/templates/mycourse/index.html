@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <h1>Add a new course</h1>
+        </div>
+        <div class="concent">
+          <table>
+            <form class="" action="{% url 'mycourse:add' %}" method="post">
+              {% csrf_token %}
+              <tr>
+                <td>Course Name: </td>
+                <td><input type="text" name="name" value=""></td>
+              </tr>
+              <tr>
+                <td>Description: </td>
+                <td><textarea name="des" rows="8" cols="80"></textarea></td>
+              </tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="" value="Add"></td>
+              </tr>
+            </form>
+          </table>
+          {% if courses %}
+          <h1>Courses</h1>
+          <table>
+            <tr>
+              <th>Course Name</th>
+              <th>Description</th>
+              <th>Date Added</th>
+              <th>Actions</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+              <td>{{ course.name }}</td>
+              <td>{{ course.des }}</td>
+              <td>{{ course.created_at }}</td>
+              <td><a href="{% url 'mycourse:destroy' course.id %}">Remove</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

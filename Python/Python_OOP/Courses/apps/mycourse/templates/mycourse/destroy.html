@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <h3>Are you sure you want to delete the following course?</h3>
+        </div>
+        <div class="concent">
+          {% if course %}
+          <table>
+            <tr>
+              <td>Name: </td>
+              <td>{{ course.name }}</td>
+            </tr>
+            <tr>
+              <td>Description: </td>
+              <td>{{ course.des }}</td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'mycourse:index' %}">No</a></td>
+              <td>
+                <form class="" action="{% url 'mycourse:remove' course.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ course.id }}">
+                  <input type="submit" name="" value="Yes! T want to delete this">
+                </form>
+              </td>
+            </tr>
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

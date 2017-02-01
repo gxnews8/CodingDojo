@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^ninjia/', include('apps.ninjia.urls')),
     url(r'^ninjiaGold/', include('apps.ninjiaGold.urls', namespace='ninjiaGold')),
     url(r'^publishers/', include('apps.publishers.urls', namespace='publishers')),#1/24/17 by King
-    url(r'^TheWall/', include('apps.TheWall.urls', namespace='TheWall')),
+    url(r'^', include('apps.TheWall.urls', namespace='TheWall')),
     url(r'^leagues/', include('apps.leagues.urls', namespace='leagues')),
+    url(r'^WishList/', include('Wish.WishList.urls', namespace='WishList')),
 ]

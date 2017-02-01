@@ -1,0 +1,26 @@
+.wrapper{}
+.main{
+  padding: 10px;
+}
+.head{}
+a{
+  padding: 5px 10px;
+  color: green;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+a:hover{
+  padding: 5px 10px;
+  color: #fff;
+  background: #000;
+  border: 1px solid green;
+  border-radius: 4px;
+}
+fieldset{
+  border-radius: 4px;
+}
+.register, .login{
+  width: 50%;
+  float: left;
+}

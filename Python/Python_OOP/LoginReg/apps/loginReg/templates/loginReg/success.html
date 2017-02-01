@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="concent">
+          <h3>Successfully registered (or logged in)!</h3>
+          <a href="{% url 'loginReg:index' %}"></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

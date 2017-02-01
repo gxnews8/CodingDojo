@@ -15,7 +15,7 @@
           </div>
           <div class="login">
             {% if request.session.user_id %}
-            Welcome {{ first_name }}
+            Welcome {{ user.first_name }}
             <a href="{% url 'TheWall:logOut' %}">Log Out</a>
             {% else %}
             <a href="{% url 'TheWall:signIn' %}">Sign In</a> <a href="{% url 'TheWall:signUp' %}">Sign Up</a>

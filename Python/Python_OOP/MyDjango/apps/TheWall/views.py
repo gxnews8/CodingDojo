@@ -7,6 +7,7 @@ def index(request):
     # print '*'*50
     index = {
         'title' : 'Welcome to The Wall',
+        'user' : User.objects.all().first(),
         'users' : User.objects.all().order_by('id').reverse(),
         'messages' : Message.objects.all().order_by('id').reverse(),
         'comments' : Comment.objects.all().order_by('id').reverse(),

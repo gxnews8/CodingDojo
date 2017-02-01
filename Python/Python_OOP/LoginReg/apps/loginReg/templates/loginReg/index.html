@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="concent">
+          <h3>Registration</h3>
+          <table>
+            <form class="" action="{% url 'loginReg:register' %}" method="post">
+              <tr>
+                <td>First Name: </td>
+                <td><input type="text" name="first_" value=""></td>
+              </tr>
+              <tr>
+                <td>Last Name: </td>
+                <td><input type="text" name="last_name" value=""></td>
+              </tr>
+              <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email" value=""></td>
+              </tr>
+              <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" value=""></td>
+              </tr>
+              <tr>
+                <td>Confirm pw: </td>
+                <td><input type="password" name="confirm_password" value=""></td>
+              </tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="" value="Register"></td>
+              </tr>
+            </form>
+          </table>
+          <h3>Login</h3>
+          <table>
+            <form class="" action="{% url 'loginReg:login' %}" method="post">
+              <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email" value=""></td>
+              </tr>
+              <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" value=""></td>
+              </tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="" value="Login"></td>
+              </tr>
+            </form>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

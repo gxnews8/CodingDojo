@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="concent">
+          The email address you entered {{ email.email }} is a VALID email address! Thank you!
+          <h3>Email Addresses Entered:</h3>
+          {%if emails %}
+            {% for email in emails %}
+            <h4>ID#{{ email.id }}. {{ email.email }} {{ email.created_at }} <a href="{% url 'Email:remove' email.id %}">Remove</a></h4>
+            {% endfor %}
+          {% endif %}
+          <a href="{% url 'Email:index' %}">Goback</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

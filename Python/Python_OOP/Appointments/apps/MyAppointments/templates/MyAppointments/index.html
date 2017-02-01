@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'MyAppointments/css/styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <div class="head">
+          <div class="logo">
+            <h1>{{ welcome }}</h1>
+          </div>
+          <div class="status">
+
+          </div>
+        </div>
+        <div class="concent">
+          <div class="register">
+            <fieldset>
+              <legend><h1>Register</h1></legend>
+              <table>
+                <form class="" action="{% url 'Appointments:register' %}" method="post">
+                  {% csrf_token %}
+                  <tr>
+                    <td>First Name</td>
+                    <td><input type="text" name="First_Name" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="Last_Name" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" value="password"></td>
+                  </tr>
+                  <tr>
+                    <td>Password Confirmation</td>
+                    <td><input type="password" name="confirm_password" value="password"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><input type="submit" name="submit" value="Register"></td>
+                  </tr>
+                </form>
+              </table>
+            </fieldset>
+          </div>
+          <div class="login">
+            <fieldset>
+              <legend><h1>Login</h1></legend>
+              <table>
+                <form class="" action="{% url 'Appointments:login' %}" method="post">
+                  {% csrf_token %}
+                  <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" value=""></td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" value="password"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><input type="submit" name="submit" value="Login"></td>
+                  </tr>
+                </form>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
