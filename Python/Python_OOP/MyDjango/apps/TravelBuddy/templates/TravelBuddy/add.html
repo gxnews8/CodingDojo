@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add plan</title>
+    <link rel="stylesheet" href="{% static 'TravelBuddy/css/styles.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      {% if request.session.user_id %}
+      <a href="{% url 'TravelBuddy:travels' %}">Home</a>
+      <a href="{% url 'TravelBuddy:logout' %}">Logout</a>
+      {% endif %}
+      <h3>Add a Trip</h3>
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <table>
+        <form class="" action="{% url 'TravelBuddy:add' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="user_id" value="{{ request.session.user_id }}">
+          <tr>
+            <td>Destination: </td>
+            <td><input type="text" name="destination" value=""></td>
+          </tr>
+          <tr>
+            <td>Describe: </td>
+            <td><input type="text" name="describe" value=""></td>
+          </tr>
+          <tr>
+            <td>Travel Date From: </td>
+            <td><input type="date" name="start" value=""></td>
+          </tr>
+          <tr>
+            <td>Travel Date To: </td>
+            <td><input type="date" name="end" value=""></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" value="Add"></td>
+          </tr>
+        </form>
+      </table>
+
+    </div><!-- end_of_container-->
+  </body>
+</html>

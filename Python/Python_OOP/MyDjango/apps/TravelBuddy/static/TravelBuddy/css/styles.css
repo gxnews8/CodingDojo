@@ -1,0 +1,40 @@
+.login, .registration{
+  display: inline-block;
+  vertical-align: top;
+  *width: 200px;
+  *height: 300px;
+}
+.main_content{
+  width: auto;
+}
+.container{
+  width: 970px;
+  margin: 0 auto;
+}
+.clear{
+  clear: both;
+}
+th, td{
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+th{
+  background: #eee;
+}
+a{
+  padding: 5px 10px;
+  color: green;
+  background: #ddd;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  text-decoration: none;
+}
+a:hover{
+  color: white;
+  background: #aaa;
+  border: 1px solid #000;
+}
+.add{
+  width: 200px;
+  float: right;
+}

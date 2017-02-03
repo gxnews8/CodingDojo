@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Dashboard</title>
+    <link rel="stylesheet" href="{% static 'TravelBuddy/css/styles.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      {% if request.session.user_id %}
+      <h1>Hello, {{ user.username }}!</h1>
+      <a href="{% url 'TravelBuddy:logout' %}">Logout</a>
+      {% endif %}
+
+      {% if mytravels %}
+      <h3>Your Trip Schedules</h3>
+      <table>
+        <tr>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Plan</th>
+          <th>Action</th>
+        </tr>
+        {% for mytravel in mytravels %}
+        <tr{% if forloop.counter|divisibleby:'2' %} style='background:#eef'{% endif %}>
+          <td>{{ mytravel.destination }}</td>
+          <td>{{ mytravel.start }}</td>
+          <td>{{ mytravel.end }}</td>
+          <td>{{ mytravel.describe }}</td>
+          <td><a href="{% url 'TravelBuddy:remove' mytravel.id %}">remove</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      {% if alltravels %}
+      <h3>Other User's Travel Plans</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Do You Want to Join?</th>
+        </tr>
+        {% for alltravel in alltravels %}
+        <tr{% if forloop.counter|divisibleby:'2' %} style='background:#eef'{% endif %}>
+          <td>{{ alltravel.user.name }}</td>
+          <td><a href="{% url 'TravelBuddy:destination' alltravel.id %}">{{ alltravel.destination }}</a></td>
+          <td>{{ alltravel.start }}</td>
+          <td>{{ alltravel.end }}</td>
+          <td>
+            <form name="form{{ alltravel.id }}" action="{% url 'TravelBuddy:join' alltravel.id %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="user_id" value="{{ request.session.user_id }}">
+              <input type="hidden" name="travel_id" value="{{ alltravel.id }}">
+              <input type="hidden" name="destination" value="{{ alltravel.destination }}">
+              <input type="hidden" name="describe" value="{{ alltravel.describe }}">
+              <input type="hidden" name="start" value="{{ alltravel.start }}">
+              <input type="hidden" name="end" value="{{ alltravel.end }}">
+              <a href="javascript:;" onClick="javascript:document.form{{ alltravel.id }}.submit();">Join</a>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+      <div class="add">
+        <a href="{% url 'TravelBuddy:add' %}">Add Travel Plan</a>
+      </div>
+    </div><!-- end_of_container-->
+  </body>
+</html>

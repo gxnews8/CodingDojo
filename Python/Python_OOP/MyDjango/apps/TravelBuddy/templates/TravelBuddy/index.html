@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Registration</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'TravelBuddy/css/styles.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="main_content">
+        <h3>Welcome!</h3>
+        <div class="clear"></div>
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+        <div class="registration">
+
+          <fieldset>
+            <legend>Register</legend>
+            <form class="" action="{% url 'TravelBuddy:register' %}" method="post">
+              {% csrf_token %}
+              <p>
+                Name
+                <input type="text" name="name" value="">
+              </p>
+              <p>
+                User name
+                <input type="text" name="username" value="">
+              </p>
+              <p>
+                Password:
+                <input type="password" name="password" value="password">
+              </p>
+              <p>*Password should be at least 8 characters</p>
+              <p>
+                Confirm PW:
+                <input type="password" name="confirm_password" value="password">
+              </p>
+              <input type="submit" name="submit" value="Register">
+            </form>
+          </fieldset>
+        </div><!-- end_of_regristration-->
+        <div class="login">
+          <fieldset>
+            <legend>Login</legend>
+            <form class="" action="{% url 'TravelBuddy:login' %}" method="post">
+              {% csrf_token %}
+              <p>
+                username
+                <input type="text" name="username" value="">
+              </p>
+              <p>
+                Password
+                <input type="password" name="password" value="password">
+              </p>
+              <input type="submit" name="submit" value="Login">
+            </form>
+          </fieldset>
+        </div><!-- end_of_login-->
+      </div><!-- end_of_main_content -->
+    </div><!-- end_of_container-->
+  </body>
+</html>
