@@ -1,0 +1,24 @@
+<h1>Welcome to QuotingDojo</h1>
+<div>
+    @{
+        foreach(var error in ViewBag.Errors)
+            {
+                if(@error.Errors.Count > 0)
+                {
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+    }
+</div>
+<form action="/quotes" method="POST">
+    <div class="input-group">
+        <label for="QuoterName">Your Name:</label>
+        <input name="QuoterName" type="text"/>
+    </div>
+    <div class="input-group">
+        <label for="QuoteContent">Your Quote</label>
+        <textarea name="QuoteContent" cols="30" rows="10"></textarea>
+    </div>
+    <button type="submit">Add my quote!</button>
+    <a href="/quotes"><button type="button">Skip to quotes!</button><a>
+</form>

@@ -1,0 +1,26 @@
+ @model List<QuotingDojoDemo.Models.Quote> 
+
+<div>
+    <h1>Here are the awesome quotes!</h1>
+@*
+    @{
+        foreach(var quote in ViewBag.Quotes)
+        {
+            <p>"@quote.QuoteContent"</p>
+            <p class="indent">-@quote.QuoterName at @quote.CreatedAt.ToString("hh:mm MMMM dd, yyyy")</p>
+            <hr/>
+        }
+    }
+*@
+
+    @{
+        foreach(var quote in Model)
+        {
+            <p>"@quote.QuoteContent"</p>
+            <p class="indent">-@quote.QuoterName at @quote.CreatedAt.ToString("hh:mm MMMM dd, yyyy")</p>
+            <hr/>
+        }
+    }
+
+    <a href='/'><button>Post a new quote!</button></a>
+</div>
