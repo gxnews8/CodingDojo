@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>All Users</h1>
+@{
+    if(ViewBag.users != null) {
+        <table>
+        @foreach(var user in ViewBag.users) {
+            <tr>
+                <td>@user.name</td>
+                <td>@user.email</td>
+            </tr>
+        }
+        </table>
+    }
+}

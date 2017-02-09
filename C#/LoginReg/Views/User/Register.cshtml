@@ -1,0 +1,16 @@
+@model loginreg.ViewModels.RegisterViewModel
+
+<h1>User Registration</h1>
+<form asp-controller="User" asp-action="Register" method="post">
+    <label asp-for="name"></label>
+    <input asp-for="name"\>
+    <span asp-validation-for="name"></span>
+    <label asp-for="email"></label>
+    <input asp-for="email"\>
+    <span asp-validation-for="email"></span>
+    <label asp-for="password"></label>
+    <input type="password" name="password">
+    <span asp-validation-for="password"></span>
+    <p><input type="submit" value="Register!"></p>
+</form>
+<p>Already Registered? <a href="/login">Login!</a></p>
