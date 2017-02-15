@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PageTitle</title>
+</head>
+<body>
+    <h1>Survey!</h1>
+    <form action="results" method="post">
+        <table>
+            <tr>
+                <td>Your Name:</td>
+                <td><input type="text" name="name" placeholder="Your Name Here" id=""></td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td>
+                    <select name="location" id="">
+                        <option value="Seattle">Seattle</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Florida">Flo-rida</option>
+                        <option value="Uzbeckybeckystanstan">Uzbeckybeckystanstan</option>
+                        <option value="The Moon">The Moon</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td>
+                <td>
+                    <select name="Language" id="">
+                        <option value="Javascript">JavaScript</option>
+                        <option value="Coffescript">CoffeeScript</option>
+                        <option value="ClojureScript">ClojureScript</option>
+                        <option value="CompanyScript">CompanyScript</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p>Comment (optional):</p>
+        <textarea name="comments" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
