@@ -1,0 +1,16 @@
+<div ng-controller="playersController">
+  <form ng-submit="addPlayer()">
+    Name <input type="text" ng-model="player.name" placeholder="Name" />
+    <input type="submit" value="Add New Player">
+  </form>
+  <table>
+    <tr>
+      <th>Player Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="player in players">
+      <td>{{ player.name }}</td>
+      <td><button ng-click='removePlayer(player)'>Remove Player</button></td>
+    </tr>
+  </table>
+</div>

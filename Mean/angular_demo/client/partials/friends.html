@@ -1,0 +1,11 @@
+<fieldset>
+  <legend><h3>Friends Controller</h3></legend>
+  <div ng-controller='friendsController'>
+    Search Friends: <input type="text" ng-model="filter_name">
+    <ul>
+      <li ng-repeat="friend in friends | filter:filter_name track by $index">
+        {{ friend.name }} - age {{ friend.age | number:0 }}, gender {{ friend.gender | uppercase }}
+      </li>
+    </ul>
+  </div>
+</fieldset>

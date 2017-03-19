@@ -1,0 +1,59 @@
+<div ng-controller="productController">
+    <fieldset>
+        <legend><h3>Products Controller</h3></legend>
+        <form ng-submit = "create()">
+          Name
+        <input type="text" ng-model = "product.name" placeholder="Name">
+        Price
+        <input type="number" step="100.01" ng-model = "product.price" placeholder="Price">
+        Quantity
+        <input type="number" step="10" ng-model = "product.quantity" placeholder="Quantity">
+        <input type="submit" value = "Add Product">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="product in products | orderBy: 'price' track by $index ">
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price | currency:"USD $"}}</td>
+                    <td> {{product.quantity}} </td>
+                    <td>
+                        <button ng-click="delete($index)">Delete Product</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </fieldset>
+</div>
+<div ng-controller='ordersController'>
+  <fieldset>
+    <legend><h3>Orders Controller</h3></legend>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="product in products | orderBy: 'price' track by $index ">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency:"USD $"}}</td>
+                <td> {{product.quantity}} </td>
+                <td>
+                    <button ng-click="update($index)">Buy Product</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

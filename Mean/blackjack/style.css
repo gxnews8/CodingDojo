@@ -1,0 +1,47 @@
+
+body{
+  background: url('http://spacecitycasino.com/wp-content/uploads/2016/06/blackjack_filler_v2-705x338.jpg');
+  background-size: cover;
+  color: white;
+}
+
+button{
+  border-radius: 100%;
+  padding: 5px 10px;
+  margin: 10px;
+  color: green;
+}
+
+#main {
+  *padding: 20px 40px;
+  *text-align: center;
+}
+
+#game h4{
+  color: red;
+}
+.card {
+  display: inline-block;
+  font-size: 200px;
+  color: white;
+  *background: green;
+}
+
+.after-game-btns {
+  display: block;
+}
+
+.during-game-btns {
+  display: none;
+}
+
+.blur {
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+            filter: blur(10px);
+
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}

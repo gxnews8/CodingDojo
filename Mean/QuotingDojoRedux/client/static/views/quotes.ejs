@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quotes</title>
+  <style media="screen">
+    .quote, .comment, textarea, input{
+      border: 1px solid #aaa;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Check out all the awesome quotes!</h1>
+  <% if (!user) { %>
+    <a href="/auth/facebook">Log In with Facebook</a>
+  <% } else { %>
+    <p>Hello, <a href="/profile"><%= user.displayName %></a> | <a href="/">Home</a> | <a href="/logout">Log Out</a></p>
+    <% for (var i in quotes) { %>
+      <div class="quote">
+        <h4>Quote: <%= quotes[i].Quote %></h4>
+        <p>Author: <%= quotes[i].Name %> at <%= quotes[i].CreatedAt %></p>
+        <div class="comment">
+          <form class="" action="/comment" method="post">
+            <input type="hidden" name="Name" value="<%= user.displayName %>">
+            Comment: <br>
+            <textarea name="Comment" rows="4" cols="40"></textarea><br>
+            <input type="submit" name="" value="Submit">
+          </form>
+        </div>
+      </div>
+    <% } %>
+  <% } %>
+</body>
+</html>

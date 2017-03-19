@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+ <!-- THESE TWO VERSIONS BELOW MUST MATCH (good thing bower will catch that for us, but be aware if you are using CDN's)!!! -->
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script src="config/routes.js"></script>
+    <script src="controllers/playersController.js"></script>
+    <script src="controllers/teamsController.js"></script>
+    <script src="controllers/associationsController.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div ng-app='app'>
+        <a href="#!/players">Players</a> | <a href="#!/teams">Teams</a> | <a href="#!/associations">Associations</a>
+        <div ng-view=""></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Factory</title>
+    <link rel="stylesheet" href="partials/style.css">
+    <script src="angular/angular.js" charset="utf-8"></script>
+    <script src="angular-route/angular-route.js" charset="utf-8"></script>
+    <!-- MODULE, FACTORY, CONTROLLER CODE -->
+    <script src="order.js" charset="utf-8"></script>
+    <script src="colors.js" charset="utf-8"></script>
+    <script src="friends.js" charset="utf-8"></script>
+    <script src="names.js" charset="utf-8"></script>
+    <script src="products.js" charset="utf-8"></script>
+    <script src="users.js" charset="utf-8"></script>
+    <!-- MODULE, FACTORY, CONTROLLER CODE in file above -->
+</head>
+
+<body>
+  <div ng-app='app'>
+    <a href="/">Home</a> | <a href="#!/colors">Colors</a> | <a href="#!/friends">Friends</a> | <a href="#!/names">Names</a> | <a href="#!/products">Products</a> | <a href="#!/users">Users</a>
+    <div ng-view=""></div>
+  </div>
+</body>
+
+</html>

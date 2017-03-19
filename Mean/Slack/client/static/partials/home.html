@@ -1,0 +1,52 @@
+<style type="text/css">
+	.box{
+		height: 25em;
+		width: 75%;
+		margin: 0 auto;
+		border-radius: 1em;
+		padding: 1em;
+	}
+	.ref{
+		text-align: center;
+		color: rgb(0,71,179);
+	}
+</style>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h3 class='ref'>Featured Discussions</h3>
+		<div class="box">
+			<table class='table table-striped'>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat='discussion in feat_discussions | limitTo:5'>
+						<td><a ng-href='#/discussions/category/{{discussion.category}}/{{discussion._id}}'><h5 ng-bind='discussion.title'></h5></a></td>
+						<td><strong><h5 ng-bind='discussion.category'></h5></strong></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row" style='height: 4em'></div>
+		<h3 class='ref'>Newest Discussions</h3>
+		<div class="box">
+			<table class='table table-striped'>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat='discussion in new_discussions | limitTo:5'>
+						<td><a ng-href='#/discussions/category/{{discussion.category}}/{{discussion._id}}'><h5 ng-bind='discussion.title'></h5></a></td>
+						<td><strong><h5 ng-bind='discussion.category'></h5></strong></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

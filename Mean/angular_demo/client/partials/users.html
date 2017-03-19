@@ -1,0 +1,33 @@
+<fieldset>
+  <legend><h3>Users Controller</h3></legend>
+  <div ng-controller='usersController'>
+    <form ng-submit='createUser()'>
+      First Name<input type="text" ng-model='user.FirstName' placeholder="First Name">
+      Last Name<input type="text" ng-model='user.LastName' placeholder="Last Name">
+      Email<input type="text" ng-model='user.Email' placeholder="Email"><br>
+      Password<input type="password" ng-model='user.Password' placeholder="Password">
+      Confirm Password<input type="password" ng-model='user.ConfirmPassword' placeholder="Confirm Password">
+      <input type="submit" value="add user">
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='userObj in users'>
+          <td>{{userObj.FirstName}}</td>
+          <td>{{userObj.LastName}}</td>
+          <td>{{userObj.Email}}</td>
+          <td>{{userObj.Password}}</td>
+          <td><button ng-click='editUser(userObj)'>Edit</button><button ng-click='adminUser(userObj)'>Admin</button><button ng-click='deleteUser(userObj)'>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</fieldset>

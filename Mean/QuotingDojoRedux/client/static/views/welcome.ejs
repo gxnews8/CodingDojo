@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <style media="screen">
+      .quote, .comment, textarea, input{
+        border: 1px solid #aaa;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 4px;
+      }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Quoting Dojo</h1>
+    <% if (!user) { %>
+      <h3>Sign Up</h3>
+      <table>
+        <form class="" action="SignUp" method="post">
+          <tr>
+            <td>First Name</td>
+            <td><input type="text" name="FirstName"></td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="LastName"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" name="Email"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="Password"></td>
+          </tr>
+          <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" name="ConfirmPassword"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Sign Up"></td>
+          </tr>
+        </form>
+      </table>
+      <h3>Sign In</h3>
+      <table>
+        <form class="" action="SignIn" method="post">
+            <td>Email</td>
+            <td><input type="text" name="Email"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" name="Password"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="Sign In"></td>
+          </tr>
+        </form>
+      </table>
+      <h3>Log In with Facebook, Twitter or Github</h3>
+      <a href="/auth/facebook"><img src="http://samsobornehus.dk/wp-content/uploads/2016/12/Facebook.png" title="Log In with Facebook" width="50"></a>
+      <a href="/auth/twitter"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbTA8xNJwBDmPKTy4LUpPU9DPcsteuKqNGbsrhSWMVSiu5qArp" title="Log In with Twitter" width="50"></a>
+      <a href="/auth/github"><img src="http://arcaneiceman.github.io/img/mark-github-256.png" title="Log In with Github" width="50"></a>
+    <% } else { %>
+    	<p>Hello, <a href="/profile"><%= user.displayName %></a> | <a href="/logout">Log Out</a></p>
+      <form action="/quotes" method="post">
+          <input type="hidden" name="Name" value="<%= user.displayName %>">
+          Quote:<br>
+          <textarea name="Quote" rows="8" cols="40"></textarea><br>
+          <input type="submit" value="Add my quote!">
+          <a href="/quotes">Skip to quotes!</a>
+      </form>
+    <% } %>
+</body>
+
+</html>

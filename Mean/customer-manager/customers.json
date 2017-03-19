@@ -1,0 +1,5 @@
+{
+  "customers": [
+    { "id": 1, "first_name": "John", "last_name": "Smith",  "phone": "219-839-2819" }
+  ]
+}

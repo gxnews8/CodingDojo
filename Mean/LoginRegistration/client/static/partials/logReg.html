@@ -1,0 +1,32 @@
+<section class="fifty">
+	<h1>Registration</h1>
+		<ul class="notif seventy center">
+			<li ng-repeat="error in regErrors">{{ error }}</li>
+		</ul><!-- end_of_notif-->
+	<form id="register" class="hundo" ng-submit="register()">
+		<label class="thirty" for="firstName">First Name: </label>
+		<input id="first" class="sixty" type="text" name="firstName" ng-model="registerUser.firstName">
+		<label class="thirty" for="lastName">Last Name: </label>
+		<input class="sixty" type="text" name="lastName" ng-model="registerUser.lastName">
+		<label class="thirty" for="email">Email Address: </label>
+		<input class="sixty" type="text" name="email" ng-model="registerUser.email">
+		<label class="thirty" for="password">Password: </label>
+		<input id="password" class="sixty" type="password" name="password" ng-keyup="checkPword()" ng-keydown="checkPword()" ng-model="registerUser.password">
+		<label class="thirty" for="confirm">Confirm Password: </label>
+		<input id="confirm" class="sixty" type="password" name="confirm" ng-keyup="checkConf()" ng-keydown="checkConf()" ng-model="registerUser.conf">
+		<input class="btn btn-pop" type="submit" name="submit" value="Register">
+	</form>
+</section>
+<section class="fifty">
+	<h1>Login</h1>
+		<ul class="notif">
+			<li ng-repeat="error in logErrors">{{ error }}</li>
+		</ul><!-- end_of_notif-->
+	<form id="login" class="hundo" ng-submit="login()">
+		<label class="thirty" for="email">Email Address: </label>
+		<input id="second" class="sixty" type="text" name="email" ng-model="loginUser.email">
+		<label class="thirty" for="password">Password: </label>
+		<input class="sixty" type="password" name="password" ng-model="loginUser.password">
+		<input class="btn btn-pop" type="submit" name="submit" value="Login">
+	</form>
+</section>

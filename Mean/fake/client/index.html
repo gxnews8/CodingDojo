@@ -1,0 +1,39 @@
+<!-- there are three mistakes, right off the bat. -->
+<!-- 1. ng-app should be attached a body element, not DOCTYPE -->
+<!-- 2. angular routes are chained by (.) period, and not by commas. There was an extra comma -->
+<!-- 3. We stated bower_components to be our STATIC folder (via express static), so we should pull script src from folders and files IN bower_components. That means leaving bower_components out of the path -->
+<!-- 4. In the index controller you are using location rather than $location, which is the actual parameter -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src='angular/angular.js'></script>
+  <script src='angular-route/angular-route.js'></script>
+  <script src='app.js'></script>
+  <script src='factories/userFactory.js'></script>
+  <script src='controllers/editController.js'></script>
+  <script src='controllers/newController.js'></script>
+  <script src='controllers/indexController.js'></script>
+  <script>
+    /*
+        This is the monolithic JavaScript that you should be modularizing.
+        The whole project has 5 problems in it, that when rectified will allow the project to run.
+        Feel free to improve upon code quality, readability, and comments.
+      */
+
+
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <title>Fake Angular</title>
+</head>
+
+<body ng-app="app">
+  <div ng-view>
+  </div>
+
+</body>
+
+</html>

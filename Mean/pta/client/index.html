@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+   <head>
+      <meta charset="utf-8">
+      <title>Players and Teams</title>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-messages.js"></script>
+      <!--We load all our modularized javascript files-->
+      <script type="text/javascript" src="./config/routes.js"></script>
+      <script type="text/javascript" src="./factories/playerFactory.js"></script>
+      <script type="text/javascript" src="./factories/teamFactory.js"></script>
+      <script type="text/javascript" src="./controllers/playersController.js"></script>
+      <script type="text/javascript" src="./controllers/teamsController.js"></script>
+      <script type="text/javascript" src="./controllers/associationsController.js"></script>
+      <link rel="stylesheet" href="./static/css/style.css">
+   </head>
+   <body>
+      <a href="#/players">Players</a> | <a href="#/teams">Teams</a> | <a href="#/associations">Associations</a>
+      <div ng-view=""></div>
+   </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-services-usage-production</title>
+
+
+  <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+  <script src="script.js"></script>
+
+
+
+</head>
+<body ng-app="myServiceModule">
+  <div id="simple" ng-controller="MyController">
+  <p>Let's try this simple notify service, injected into the controller...</p>
+  <input ng-init="message='test'" ng-model="message" >
+  <button ng-click="callNotify(message);">NOTIFY</button>
+  <p>(you have to click 3 times to see an alert)</p>
+</div>
+</body>
+</html>
+
+<!--
+Copyright 2017 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

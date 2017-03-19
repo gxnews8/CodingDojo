@@ -1,0 +1,19 @@
+<fieldset>
+  <legend><h3>Names Controller</h3></legend>
+    <div ng-controller="nameController as nameCtrl">
+      <div class="left">
+        <form ng-submit="nameCtrl.addName()">
+          Name: <input type="text" ng-model="nameCtrl.name"/>
+          <input type="submit" value="Add a name"/>
+        </form>
+        <p>Currently typing: {{ nameCtrl.name }}</p>
+      </div>
+      <div class="right">
+        <h2>Name stuff</h2>
+        <input type="text" placeholder="filter..." ng-model="nameFilter">
+        <div ng-repeat="name in nameCtrl.names | filter:nameFilter track by $index">
+          <p>{{ name }}</p>
+        </div>
+      </div>
+    </div>
+</fieldset>

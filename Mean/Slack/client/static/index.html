@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app='discussionsApp'>
+	<head>
+		<meta charset='utf-8'>
+		<title ng-bind='title'>Slack In Mean</title>
+		<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+		<style type="text/css">
+			html{
+				height: 100%;
+			}
+			body{
+				background-image: url("./images/background-pic.jpg");
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			.cont{
+				width: 93%;
+				height: auto;
+				margin: 3em auto;
+				position: relative;
+				padding-bottom: 10em;
+			}
+			#nav-right{
+				width: 40%;
+			}
+			.navbut{
+				display: inline-block;
+				vertical-align: middle;
+				padding-right: 5%;
+			}
+			.navcut{
+				margin-top: 0.8em;
+			}
+			#wel{
+				margin-top: 7px;
+			}
+			#log, #sig{
+				padding: 0px 2em;
+				vertical-align: middle;
+			}
+			#bottext{
+				position: absolute;
+				bottom: 0.5em;
+				text-align: center;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body ng-controller='userController'>
+		<div class="cont">
+			<nav id='nav' class="navbar">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			      </button>
+			      <a style='font-size: 20px' class="navbar-brand" href="#/">Discussion Boards</a>
+			    </div>
+			      <ul class="nav navbar-nav" style='margin-right: 20%'>
+			        <li class="dropdown">
+			          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Find By Category<span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#/discussions/category/travel">Travel</a></li>
+			            <li><a href="#/discussions/category/sports">Sports</a></li>
+			            <li><a href="#/discussions/category/politics">Politics</a></li>
+			            <li><a href="#/discussions/category/business">Business</a></li>
+			            <li><a href="#/discussions/category/food">Food</a></li>
+			            <li><a href="#/discussions/category/entertainment">Entertainment</a></li>
+			          </ul>
+			        </li>
+			      </ul>
+		      	<ul id='nav-right' class="nav navbar-nav">
+		      		<li class='navbut' id='wel' ng-hide="!currentUser">
+		      			<strong><h4 ng-bind="'Welcome, '+ currentUser.name +'!'"></h4></strong>
+					</li>
+					<li class='navbut' id='bel' ng-hide="!currentUser">
+						<a ng-href='#/profile/{{currentUser._id}}'>View Profile</a>
+		      		</li>
+		      		<li class='navbut' style='padding-right: 0' ng-hide="!currentUser">
+		      			<a href="#" ng-click='logout()'>Logout</a>
+		      		</li>
+		      		<li class='navcut' id='log' ng-hide="currentUser">
+						<button id='but' type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#login">Login</button>
+					</li>
+					<li class='navcut' id='sig' ng-hide="currentUser">
+						<button id='cut' type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#signup">Sign Up</button>
+		      		</li>
+		      	</ul>
+			</nav>
+			<div class="row" style='height: 1em'></div>
+			<div class="row">
+				<div class="col-md-2">
+					<div class="btn-group-vertical" role="group">
+						<form action='#/create_discussion' method='get'>
+							<button class="btn btn-default">Create New Discussion</button>
+						</form>
+						<form action='#/search_discussions' method='get'>
+							<button class="btn btn-default">Search Discussions</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div ng-view=''></div>
+			</div>
+			<h5 id='bottext' style='text-align: center'>All rights reserved.</h5>
+		</div>
+		<div>
+			<div id="signup" class="modal fade" role="dialog">
+				<div class="modal-dialog" role='document'>
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">New User Sign Up</h4>
+			      </div>
+			      <div class="modal-body">
+				       	<form role='form'>
+				       		<div class="form-group" style='width: 95%'>
+				       			<label>Name</label>
+					       		<input class='form-control' placeholder='Name' type='text' ng-model='new_user.name'>
+					       	</div>
+					       	<div class="form-group" style='width: 95%'>
+				       			<label>Username</label>
+					       		<input class='form-control' placeholder='Username' type='text' ng-model='new_user.username'>
+					       	</div>
+					       	<div class="form-group" style='width: 95%'>
+				       			<label>Password</label>
+					       		<input class='form-control' placeholder='Password' type='password' ng-model='new_user.password'>
+					       	</div>
+					       	<div class="form-group" style='width: 95%'>
+				       			<label>Confirm Password</label>
+					       		<input class='form-control' placeholder='Confirm Password' type='password' ng-model='new_user.confirm_password'>
+					       	</div>
+					       	<br>
+					       	<p ng-repeat='error in signup_errors' ng-bind='error' style='color: red'></p>
+				       </form>
+			      </div>
+			      <div class="modal-footer">
+			      	<a href="#/" data-toggle="modal" data-target="#login" data-dismiss="modal">Already have an account, click here to login.</a>
+			        <button type="button" class="btn btn-default" ng-click='user_signup()'>Sign Up</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+				  </div>
+				</div>
+			</div>
+			<div id="login" class="modal fade" role="dialog">
+			  <div class="modal-dialog" role='document'>
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Existing User Login</h4>
+			      </div>
+			      <div class="modal-body">
+			        <form role='form'>
+				       	<div class="form-group" style='width: 95%'>
+			       			<label>Username</label>
+				       		<input class='form-control' placeholder='Username' type='text' ng-model='user.username'>
+				       	</div>
+				       	<br>
+				       	<div class="form-group" style='width: 95%'>
+			       			<label>Password</label>
+				       		<input class='form-control' placeholder='Password' type='password' ng-model='user.password'>
+				       	</div>
+				       	<br>
+				       	<p ng-repeat='error in login_errors' ng-bind='error' style='color: red'></p>
+				    </form>
+			      </div>
+			      <div class="modal-footer">
+			      	<a href="#/" data-toggle="modal" data-target="#signup" data-dismiss="modal">Not an existing user, click here to sign up.</a>
+			        <button type="button" class="btn btn-default" ng-click='user_login()'>Login</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		<script type="text/javascript" src='index.js'></script>
+		<script type="text/javascript" src='discussion.js'></script>
+	</body>
+</html>

@@ -1,76 +1,31 @@
-function Deck(){
-  // When constructor funtion is invoked, run this code to populate deck with cards
-  this.buildDeck();
-}
+console.log('hello main!!!')
 
-Deck.prototype.buildDeck = function(){
-  var suits = ['diamonds', 'clubs', 'hearts', 'spades'],
-      values = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king'],
-      // Capture snapshot of this for use in callback function
-      self = this;
+var newDeck = new Deck()
+// console.log(newDeck)
+// newDeck.reset()
+// console.log(newDeck)
+// console.log(newDeck.deck.length)
+// newDeck.populateDeck()
+// console.log(newDeck)
 
-  // Set up cards in deck as empty array
-  this.cards = [];
-  // Nested for loops iterate over suits and values to create new cards
-  suits.forEach(function(suit){
-    values.forEach(function(value){
-      self.cards.push(new Card(value, suit));
-    });
-  });
-  return this;
-}
+var p1 = new Player('Matt')
+var p2 = new Player('Computer')
 
-Deck.prototype.shuffle = function(){
-  // Used https://bost.ocks.org/mike/shuffle/ to build shuffle logic
-  var unshuffledEdge = this.cards.length,
-      cardToShuffleIdx,
-      temp;
+p1.draw(newDeck).draw(newDeck).draw(newDeck).draw(newDeck)
+p2.draw(newDeck).draw(newDeck).draw(newDeck).draw(newDeck)
 
-  // While there remain elements to shuffle…
-  while (unshuffledEdge > 0) {
-    // Pick an element in the unshuffled portion…
-    cardToShuffleIdx = Math.floor(Math.random() * unshuffledEdge);
-    // Move the unshuffledEdge closer to front of array
-    unshuffledEdge -= 1;
+console.log(p1)
+console.log(p2)
+console.log(newDeck)
 
-    // And swap the chosen card to the back
-    temp = this.cards[cardToShuffleIdx]
-    this.cards[cardToShuffleIdx] = this.cards[unshuffledEdge]
-    this.cards[unshuffledEdge] = temp;
-  }
-  return this
-}
+$('#main').append(`<h2>Player hand</h2>`)
+p1.showHand($('#main'))
 
-Deck.prototype.reset = function(){
-  this.buildDeck().shuffle();
-}
+$('#main').append(`<h2>Dealer hand</h2>`)
+p2.showHand($('#main'))
 
-Deck.prototype.dealRandomCard = function(){
-  return (this.cards.length > 0) ? this.cards.pop() : null;
-}
+p1.discard(1)
 
-function Card(value, suit){
-  this.value = value;
-  this.suit = suit;
-}
-
-function Player(name){
-  this.name = name;
-  this.hand = [];
-}
-
-Player.prototype.takeCard = function(deck){
-  // Method recieves a deck, and pulls a card from the deck to add to player's hand
-  this.hand.push(deck.dealRandomCard());
-  return this;
-}
-
-Player.prototype.discard = function(cardIdx){
-  // Method recieves a location of the card to remove and deletes it from player's hand.
-  if (this.hand.length > cardIdx){
-    this.hand.splice(cardIdx, 1);
-  }
-  return this;
-}
-
-// NOW GO BUILD A GAME!
+// for (var i = 0; i < p2.hand.length; i++) {
+//   $('#main').append(`&#${p2.hand[i].cardImg};`)
+// }

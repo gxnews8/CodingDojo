@@ -1,0 +1,35 @@
+<input ng-model = "name_filter" placeholder = "By Name">
+<input ng-model = "red_filter" placeholder = "By Red Hex">
+<input ng-model = "green_filter" placeholder = "By Green Hex">
+<input ng-model = "blue_filter" placeholder = "By Blue Hex">
+<fieldset>
+  <legend><h3>Colors Controller</h3></legend>
+  <div ng-controller="colorController">
+      <table>
+          <thead>
+              <tr>
+                  <th>
+                      Color Name
+                  </th>
+                  <th>
+                      HEX
+                  </th>
+                  <th>
+                      Color
+                  </th>
+                  <th>
+                    Visual
+                  </th>
+              </tr>
+          </thead>
+          <tbody ng-repeat = "color in colors|red:red_filter|green:green_filter|blue:blue_filter|filter:{name:name_filter}">
+              <tr>
+                <td>{{color.name}}</td>
+                <td>{{color.hex}}</td>
+                <td>{{color.rgb}}</td>
+                <td style = "background-color:{{color.hex}}"></td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</fieldset>

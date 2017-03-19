@@ -1,0 +1,17 @@
+<p>
+ID: <%= user.id %><br/>
+Provider: <%= user.provider %><br/>
+<% if (user.username) { %>
+Username: <%= user.username %><br/>
+<% } %>
+<% if (user.displayName) { %>
+Name: <%= user.displayName %><br/>
+<% } %>
+<% if (user.emails) { %>
+Email: <%= user.emails[0].value %><br/>
+<% } %>
+<% if (user.photos) { %>
+Photos: <img src="<%= user.photos[0].value %>" alt="<%= user.provider %>"><br/>
+<% } %>
+Hello, <a href="/profile"><%= user.displayName %></a> | <a href="/">Home</a> | <a href="/quotes">Quotes</a> | <a href="/logout">Log Out</a>
+</p>

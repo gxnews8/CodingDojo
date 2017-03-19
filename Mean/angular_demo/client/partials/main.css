@@ -1,0 +1,17 @@
+div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td,
+th {
+    border: 1px solid #CCC;
+}
+input {
+    display: block;
+}

@@ -1,0 +1,57 @@
+<style type="text/css">
+	#results{
+		border: 0 2px solid black;
+		height: auto;
+		width: 40%;
+		margin: 0 auto;
+	}
+	#search{
+		height: 15em;
+		width: 45%;
+		margin-left: 30%;
+	}
+	.form-group{
+		display: inline-block;
+	}
+	#result{
+		margin: 0 auto;
+		border: 1px black dashed;
+		padding: 1em;
+		border-radius: 2em;
+	}
+</style>
+<div class="row"></div>
+<div class="row">
+	<div id='search'>
+		<h3 style='margin-left: 18%'>Search All Discussions</h3>
+		<div class="row" style='height: 4em'></div>
+		<form role='form'>
+			<div class="form-group" style='width: 70%'>
+				<input class='form-control' placeholder='Search Discussion Keywords' type='text' ng-model='Search.text'>
+			</div>
+			<div class="form-group">
+				<button class='btn btn-success btn-md' ng-click='search()'>Search</button>
+			</div>
+		</form>
+		<p style='margin-left: 20%'>Ex. "diners", "beach", "travel"</p>
+	</div>
+</div>
+<div class="row">
+	<div id='results'>
+		<div class="row" ng-if='no_discussions'>
+			<div style='margin: 0 auto'>
+				<h4 style='margin-left: 18%; color: rgb(230,0,0);'>Sorry, no discussions were found for "<span ng-bind='currentSearch'></span>".</h4>
+			</div>
+		</div>
+		<div class="row" ng-if='discussions'>
+			<div ng-repeat='each in discussions' style='margin: 0 auto'>
+				<div id='result'>
+					<h3 ng-bind='each.title' style='text-align: center'></h3>
+					<p ng-bind='each.description' style='text-align: center'></p>
+					<button ng-click='viewDiscussion(each)' style='margin-left: 37%'>View Discussion</button>
+				</div>
+				<div class="row" style='height: 1em'></div>
+			</div>
+		</div>
+	</div>
+</div>

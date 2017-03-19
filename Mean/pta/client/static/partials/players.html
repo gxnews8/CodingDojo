@@ -1,0 +1,22 @@
+<div ng-controller="PlayersController">
+   <form name='playerForm'>
+      Name <input type="text" name='name' ng-model="newPlayer.name" placeholder="Name" minlength='4' required/>
+      <!--When the button is clicked, run the addPlayer function-->
+      <button type="submit" ng-click="addPlayer()">Add New Player</button>
+   </form>
+   <div ng-messages="playerForm.name.$error">
+       <p ng-message="minlength">The player name is too short.</p>
+       <p ng-message="required">The player name is required.</p>
+   </div>
+   <table border="1">
+      <tr>
+         <td>Name</td>
+         <td>Actions</td>
+      </tr>
+      <tr ng-repeat="player in players">
+         <td ng-bind="player.name"></td>
+         <!--When the button is clicked, run the removePlayer function-->
+         <td><button ng-click="removePlayer($index)">Remove Player</button></td>
+      </tr>
+   </table>
+</div>

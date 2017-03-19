@@ -1,0 +1,22 @@
+<div ng-controller="TeamsController">
+   <form name='teamForm'>
+      Name <input type="text" name='name' ng-model="newTeam.name" placeholder="Name" minlength='4' required/>
+      <!--When the button is clicked, run the addTeam function-->
+      <button type="submit" ng-click="addTeam()">Add New Team</button>
+   </form>
+   <div ng-messages="teamForm.name.$error">
+       <p ng-message="minlength">The team name is too short.</p>
+       <p ng-message="required">The team name is required.</p>
+   </div>
+   <table border="1">
+      <tr>
+         <td>Team Name</td>
+         <td>Actions</td>
+      </tr>
+      <tr ng-repeat="team in teams track by $index">
+         <td><a href="#/{{team.name}}" ng-bind = 'team.name'></a></td>
+         <!--When the button is clicked, run the removeTeam function-->
+         <td><button ng-click="removeTeam($index)">Remove Team</button></td>
+      </tr>
+   </table>
+</div>

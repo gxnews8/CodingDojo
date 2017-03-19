@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+main {
+	border: 1px solid gray;
+	box-shadow: 1px 1px 5px gray;
+	margin: 50px auto;
+	padding: 20px;
+}
+
+section {
+	display: inline-block;
+	vertical-align: top;
+	padding-left: 4%;
+}
+
+section:first-child {
+	border-right: 1px solid gray;
+}
+
+table {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: gray;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+	padding: 3px;
+	text-align: center;
+}
+
+form {
+	margin: 10px auto;
+	padding: 20px;
+}
+
+label, input {
+	display: inline-block;
+	vertical-align: bottom;
+	margin: 5px 0;
+}
+
+input {
+	padding: 3px;
+}
+
+.ten {
+	width: 9%;
+}
+
+.twenty {
+	width: 19%;
+}
+
+.thirty {
+	width: 29%;
+}
+
+.forty {
+	width: 39%;
+}
+
+.fifty {
+	width: 49%;
+}
+
+.sixty {
+	width: 59%;
+}
+
+.seventy {
+	width: 69%;
+}
+
+.eighty {
+	width: 79%;
+}
+
+.ninety {
+	width: 89%;
+}
+
+.hundo {
+	width: 99%;
+}
+
+.btn {
+	display: block;
+	margin: 10px 0;
+	width: 5.5em;
+	height: 1.5em;
+	font-size: .9em;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 3px black;
+}
+
+.btn-dflt {
+	background: linear-gradient(lightgray, gray);
+	color: black;
+	padding: 3px;
+	text-align: center;
+}
+
+.btn-imp {
+	background: linear-gradient(lightgray, red 30%);
+	color: white;
+	padding: 3px;
+	text-align: center;
+}
+
+.btn-pop {
+	background: linear-gradient(lightgray, blue 30%);
+	color: white;
+	padding: 3px;
+	text-align: center;
+}
+
+.red {
+	background-color: red;
+	color: white;
+}
+
+.green {
+	background-color: green;
+	color: black;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.center {
+	margin: 0 center;
+}
+
+.notif {
+	margin-top: 10px;
+	padding: 5px;
+	color: red;
+}
+
+.notif > li {
+	margin-left: 30px;
+}
