@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="#!/">Home</a></li>
+  <li role="presentation"><a href="#!/customers">Customers</a></li>
+  <li role="presentation"><a href="#!/products">Products</a></li>
+  <li role="presentation"><a href="#!/orders">Orders</a></li>
+  <li role="presentation" ng-if="!curuser.name"><a href="#!/signin">Sign In</a></li>
+  <li role="presentation" ng-if="!curuser.name"><a href="#!/signup">Sign Up</a></li>
+  <li role="presentation" ng-if="curuser.name"><a href="#!/logout">Log Out</a></li>
+  <li role="presentation" ng-if="curuser.name"><a href="#!/users">Users</a></li>
+  <li role="presentation" ng-if="curuser.name"><a href="#!/settings">Settings</a></li>
+</ul>

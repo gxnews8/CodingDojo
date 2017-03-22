@@ -1,47 +1,47 @@
-/*************Creates variables from node_modules -- same as var ____ = require('_____') but in ES6**********/
-import mongoose from 'mongoose';
-/***************End imports****************/
+var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
-const UserSchema = new mongoose.Schema({ //creates a constant variable storing the UserSchema model
-	firstName: { //user must contain a first name...
-		type: String,
-		required: [true, 'First Name not provided'], //this field is required, if it is left blank, throw this error
-		validate: { //validates first name field based on below regex
-			validator: val => {
-				return /^[a-zA-Z\-\']{2,}$/.test(val);
-			},
-			message: 'First Name not proper format' //throws this error if first name does not match regex
-		}
-	},
-	lastName: { //user must contain a last name...
-		type: String,
-		required: [true, 'Last Name not provided'], //this field is required, if it is left blank, throw this error
-		validate: { //validates last name field based on below regex
-			validator: val => {
-				return /^[a-zA-Z\-\']{2,}$/.test(val);
-			},
-			message: 'Last Name not proper format' //throws this error if last name does not match regex
-		}
-	},
-	email: { //user must contain an email...
-		type: String,
-		validate: { //validates email field based on below regex
-			validator: val => {
-				return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/.test(val);
-			},
-			message: 'Email not proper format' //throws this error if email does not match regex
-		},
-		required: [true, 'Email not provided'], //this field is required, if it is left blank, throw this error
-		index: {
-			unique: true //given index for email field will not be duplicated
-		}
-	},
-	password: { //user must contain a password
-		type: String,
-		required: [true, 'Password not provided'], //this field is required, if it is left blank, throw this error (last back end check)
-	}
+var usersSchema = new mongoose.Schema({
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        required:true
+    },
+    birthday: {
+        type: Date,
+        required: true
+    }
 }, {
-	timestamps: true //require timestamps on all users
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
+    }
 });
 
-const User = mongoose.model('User', UserSchema); //attaches the User constant variable to mongoose
+usersSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
+};
+
+// checking if password is valid
+usersSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+usersSchema.pre('save', function(done) {
+    this.password = this.generateHash(this.password);
+    done();
+});
+
+mongoose.model('User', usersSchema);

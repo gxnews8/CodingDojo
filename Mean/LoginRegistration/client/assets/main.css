@@ -1,0 +1,33 @@
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 8px;
+    box-sizing: border-box;
+}
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 8px;
+    box-sizing: border-box;
+}
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 8px;
+    box-sizing: border-box;
+}
+input[type=submit]{
+    margin: 8px 8px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+input[type=date]{
+    margin: 8px 8px;
+}
+input{
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: green;
+}

@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="description" content="Coding Dojo MEAN assignment Login and Registration">
-	<title>Login and Registration</title>
-	<link rel="stylesheet" href="/static/css/css_boilerplate.css">
-	<script type="text/javascript" src="/angular/angular.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/angular-route/angular-route.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/app.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/controllers/dashController.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/controllers/logRegController.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/factories/userFactory.js" charset="utf-8"></script>
+<html lang="en" ng-app = "app">
+<head >
+  <meta charset="UTF-8">
+  <title>Angular Login</title>
+  <link rel="stylesheet" href="assets/main.css">
+  <script src = 'angular/angular.js'></script>
+  <script src = 'angular-route/angular-route.js'></script>
+  <script src = 'angular-cookies/angular-cookies.js'></script>
+  <script src="assets/app.js" charset="utf-8"></script>
 </head>
-<body>
-	<main class="eighty center" ng-view>
-	</main>
+<body ng-controller = 'loginController'>
+  <form ng-model = "registration" ng-submit = "register()">
+    {{errors.first_name.message}}
+    <input type="text" ng-model = "registration.first_name" placeholder= "first name">
+    {{errors.last_name.message}}
+    <input type="text"  ng-model = "registration.last_name" placeholder= "last name">
+    {{errors.email.message}}
+    <input type="email"  ng-model = "registration.email" placeholder= "email">
+    {{errors.password.message}}
+    <input type="password"  ng-model = "registration.password" placeholder= "password">
+    <input type="password" ng-model = "registration.confirm_password" placeholder= "confirm password">
+    {{errors.birthday.message}}
+    <input type="date" ng-model = "registration.birthday">
+    <input type="submit" value = "register">
+  </form>
+</br>
+  <form ng-model = "userLogin" ng-submit = "login()">
+    {{errors.login_reg.message}}
+    <input type="email"  ng-model = "userLogin.email" placeholder= "email"><br>
+    <input type="password"  ng-model = "userLogin.password" placeholder= "password">
+
+    <input type="submit" value = "login">
+  </form>
 </body>
 </html>

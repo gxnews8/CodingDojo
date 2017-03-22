@@ -1,0 +1,93 @@
+App.factory('StoreFactory', function($http, $location){
+  var factory = {};
+
+  factory.getProducts = function(){
+    return $http.get('/products')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.getUsers = function(){
+    return $http.get('/users')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.getCustomers = function(){
+    return $http.get('/customers')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.getOrders = function(){
+    return $http.get('/orders')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.getRecentOrders = function(){
+    return $http.get('/orders/recent')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.getRecentCustomers = function(){
+    return $http.get('/customers/recent')
+      .then(function(res){ return res.data; })
+  }
+
+  factory.signUp = function(newUser){
+    return $http.post('/users', newUser)
+  }
+
+  factory.signIn = function(user){
+    return $http.post('/user', user)
+  }
+
+  factory.logOut = function($http){
+    $http.session.destroy()
+    $location.url('/')
+  }
+
+  factory.deleteUser = function(id){
+    return $http.delete(`/users/${id}`)
+  }
+
+  factory.createCustomer = function(newCustomer){
+    return $http.post('/customers', newCustomer)
+  }
+
+  factory.deleteCustomer = function(id){
+    return $http.delete(`/customers/${id}`)
+  }
+
+  factory.createProduct = function(newProduct){
+    return $http.post(`/products`, newProduct);
+  }
+
+  factory.createOrder = function(newOrder){
+    return $http.post(`/orders/${newOrder._product}/${newOrder._customer}/${newOrder._user}`, newOrder)
+      .then( function(response){
+        if (!response.data) {
+          throw new Error('Could not complete purchase...')
+        }
+      })
+  }
+
+  factory.deleteProduct = function(id){
+    return $http.delete(`/products/${id}`)
+  }
+
+  factory.deleteOrder = function(id){
+    return $http.delete(`/orders/${id}`)
+  }
+
+  factory.getCurUser = function(cb){
+    $http.get('/getcuruser')
+  }
+
+  factory.signIn = function(user){
+    $http.post('/signIn', user).then(function(output){
+      if(output.data.status){
+        $location.url('/dashboard')
+      }
+    })
+  }
+
+  return factory;
+})

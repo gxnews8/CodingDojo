@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+
+.product-panel {
+  *height: 175px;
+  *overflow: scroll;
+}
+
+.panel-body img {
+  width: 100%;
+}
+
+table.customer {
+  margin-top: 40px;
+}
+
+input.filter {
+  margin-top: 40px;
+}
+input, select{
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}

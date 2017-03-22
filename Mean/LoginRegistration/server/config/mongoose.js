@@ -1,14 +1,11 @@
-/*************Creates variables from node_modules -- same as var ____ = require('_____') but in ES6**********/
-import mongoose from 'mongoose';
-import path from 'path';
-import fs from 'fs';
-/***************End imports****************/
-
-const models_path = path.join(__dirname, '../models'); //creates constant (non-changing) variable for the path to the models folder
-
-mongoose.connect('mongodb://localhost/logreg'); //connects the server with the database through mongoose
-fs.readdirSync(models_path).forEach(file => { //for every file in the models folder...
-	if (file.indexOf('.js') >= 0) { //if the file is a JavaScript file (has a .js extension)...
-		require(models_path + '/' + file); //import that file
-	}
-});
+// require this file in your server (so it loads your models)
+var mongoose = require('mongoose');
+var fs = require('fs');
+var path = require('path');
+mongoose.connect('mongodb://localhost/myDB');
+var models_path =path.join( __dirname , '/../models');
+fs.readdirSync(models_path).forEach(function(file) {
+  if(file.indexOf('.js') > 0) {
+    require(models_path + '/' + file);
+  }
+})

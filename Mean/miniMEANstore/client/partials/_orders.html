@@ -1,0 +1,48 @@
+<h1>Orders</h1>
+<div class="row">
+  <h2>Add new order</h2>
+  <form ng-submit="createOrder()">
+    <div class="form-group">
+      <label for="customer">Customer</label>
+      <select ng-model="newOrder._customer">
+        <option value="">Choose Customer</option>
+        <option id='customer' ng-repeat="customer in customers" value="{{customer._id}}">{{customer.first_name}} {{customer.last_name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="product">Product</label>
+      <select ng-model="newOrder._product">
+        <option value="">Choose Product</option>
+        <option id='product' ng-repeat="product in products" value="{{product._id}}">{{product.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input id='quantity' type="number" ng-model="newOrder.quantity" >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="row">
+  <table class="table table-hover customer">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='order in orders'>
+        <td>{{order._customer.first_name}} {{order._customer.last_name}}</td>
+        <td>{{order._product.name}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.created_at | date: "MMM. dd, yyyy"}}</td>
+        <td><button class='btn btn-primary' ng-click='editOrder(order._id)'>Edit</button>
+        <button class='btn btn-danger' ng-click='deleteOrder(order._id)'>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

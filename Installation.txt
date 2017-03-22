@@ -1,5 +1,8 @@
 Installation
 Make sure these are all installed:
+https://learn.codingdojo.com
+gxnews@hotmail.com
+8f96dfbe
 
 Atom - https://atom.io/
 MAMP - https://www.mamp.info/en/

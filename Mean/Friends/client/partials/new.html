@@ -1,0 +1,15 @@
+<!-- You will attach an ng-model and an ng-submit to your forms (but might want to wait until the next tab, when you have your controllers and factory) -->
+<h1>Create Friends!</h1>
+<form ng-submit="NC.create()">
+  <div>
+    <label>Enter your friend's name!</label>
+    <input ng-model="NC.newFriend.name" />
+  </div>
+
+  <div>
+    <label>Enter your friend's favorite language!</label>
+    <input ng-model="NC.newFriend.favoriteLanguage" />
+  </div>
+
+  <input type="submit" value="Create Friend">
+</form>

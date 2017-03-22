@@ -1,0 +1,68 @@
+<h1>Welcome</h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-3">
+    <h2>Login</h2>
+    <form ng-submit="signIn()" class="form-inline">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" ng-model="user.email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ng-model="user.password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+    <h2>Registration</h2>
+    <form ng-submit="signUp()" class="form-inline">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" class="form-control" id="first_name" ng-model="newUser.first_name">
+      </div>
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name" ng-model="newUser.last_name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" ng-model="newUser.email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ng-model="newUser.password">
+      </div>
+      <div class="form-group">
+        <label for="confrim_password">Confrim Password</label>
+        <input type="password" class="form-control" id="confrim_password" ng-model="newUser.confrim_password">
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="date" class="form-control" id="birthday" ng-model="newUser.birthday">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <table class="table table-hover customer">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>Created Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='user in users'>
+        <td>{{user.first_name}} {{user.last_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.birthday | date: "MM/dd"}}</td>
+        <td>{{user.created_at | date: "MMM. dd, yyyy"}}</td>
+        <td><button class='btn btn-primary' ng-click="editUser(user._id)">Edit</button>
+          <button class='btn btn-danger' ng-click="deleteUser(user._id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

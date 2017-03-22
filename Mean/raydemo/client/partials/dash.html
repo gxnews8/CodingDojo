@@ -1,0 +1,10 @@
+
+<div ng-controller="sessionController">
+  <p>Welcome, {{curuser.name}}!</p>
+  <a href="/logout">Log Out</a>
+</div>
+<div ng-controller="userController">
+  <div ng-repeat="user in users" ng-if="user.name != curuser.name">
+    {{ user.name }}
+  </div>
+</div>
