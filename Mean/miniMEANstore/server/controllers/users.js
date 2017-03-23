@@ -18,6 +18,16 @@ module.exports = {
       return res.json(true);
     });
   },
+  show: function(req, res){
+  	Order.findById(req.params.id, function(err, user){
+  		if (err){
+  			res.json(err);
+  		}
+  		else {
+  			res.json(user);
+  		}
+  	})
+  },
   delete: function(req, res){
     // Remove all orders w/ that user
     Order.removeOrdersByUserId(req.params.id, function(err){
@@ -53,16 +63,5 @@ module.exports = {
         res.json({status: true})
       }
     })
-  },
-  getCurUser: function(req, res){
-    if(!req.session.user || req.session.user == null){
-      res.send(null)
-    }else{
-      res.send(req.session.user)
-    }
-  },
-  logOut: function(req, res){
-    req.session.destroy()
-    res.redirect('/')
   }
 }

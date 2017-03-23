@@ -1,1 +1,1 @@
-npm install -S angular angular-cookies angular-moment angular-route bcryptjs body-parser bootstrap express express-session jquery mongoose
+npm install -S angular angular-cookies angular-moment angular-route bcryptjs bcrypt body-parser passport bootstrap express express-session jquery mongoose

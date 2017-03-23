@@ -41,12 +41,12 @@ module.exports = {
     })
   },
   show: function(req, res){
-  	Order.findById(req.params.id, function(err, friend){
+  	Order.findById(req.params.id, function(err, order){
   		if (err){
   			res.json(err);
   		}
   		else {
-  			res.json(friend);
+  			res.json(order);
   		}
   	})
   },

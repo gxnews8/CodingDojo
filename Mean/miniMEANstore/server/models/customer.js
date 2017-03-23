@@ -6,10 +6,10 @@ var bcrypt = require('bcryptjs');
 
 var CustomerSchema = new Schema({
   _user: { type : ObjectId, ref : 'User' },
-  first_name: String,
-  last_name: String,
-  email: String,
-  password: String,
+  first_name: { type: String, default: 'Coding' },
+  last_name: { type: String, default: 'Dojo' },
+  email: { type: String, default: 'coding@dojo.com' },
+  password: { type: String, default: 'Dojo#2016' },
   birthday: String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date, default: Date.now() }

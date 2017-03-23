@@ -7,15 +7,12 @@ module.exports = function(app){
   app.get('/', function(req, res){
     res.sendFile(__dirname + '../../client/index.html');
   });
-  // app.get('/getcuruser', function(req, res){
-  //   session.getCurUser(req, res)
-  // });
 
   // USERS
   app.get('/users', User.index);
   app.get('/users/recent', User.recent);
   app.post('/users', User.create);
-  // app.post('/user', User.signIn);
+  app.post('/users/login', User.login);
   app.delete('/users/:id', User.delete);
 
   // CUSTOMERS

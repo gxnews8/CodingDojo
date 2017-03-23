@@ -6,8 +6,9 @@ var OrderSchema = new Schema({
   _user: { type : ObjectId, ref : 'User' },
   _customer: { type : ObjectId, ref : 'Customer' },
   _product: { type : ObjectId, ref : 'Product' },
-  quantity: Number,
-  created_at: { type: Date, default: Date.now() }
+  quantity: { type: Number, default: 1 },
+  created_at: { type: Date, default: Date.now() },
+  updated_at: { type: Date, default: Date.now() }
 });
 
 

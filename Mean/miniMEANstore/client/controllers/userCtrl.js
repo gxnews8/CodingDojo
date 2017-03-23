@@ -1,7 +1,6 @@
-App.controller('UserController', function($scope, StoreFactory, $routeParams, $location){
+App.controller('UserController', function($scope, StoreFactory, $routeParams){
   $scope.users = [];
   fetchUsers();
-  $scope.cur_user = null;
 
   function fetchUsers(){
     StoreFactory.getUsers()
@@ -10,41 +9,22 @@ App.controller('UserController', function($scope, StoreFactory, $routeParams, $l
     });
   }
 
-  $scope.signUp = function(){
-    StoreFactory.signUp($scope.newUser)
+  $scope.createUser = function(){
+    StoreFactory.createUser($scope.newUser)
     .then( function(){
       $scope.newUser = {};
     })
     .then( fetchUsers )
   }
 
-  $scope.signIn = function(){
-    // StoreFactory.signIn($scope.user,function(user){
-    //   if(user){
-        // console.log(user.data);
-        // $scope.cur_user = user;
-        $location.url('/dashboard')
-    //   }
-    // })
+  $scope.login = function(user){
+    StoreFactory.login(user)
+    .then( fetchUsers )
+      console.log(fetchUsers);
   }
 
   $scope.deleteUser = function(id){
     StoreFactory.deleteUser(id)
     .then( fetchUsers )
   }
-
-  $scope.getCurUser = function(){
-    sessionFactory.getCurUser(function(data){
-      $scope.cur_user = data;
-      if(!$scope.cur_user){
-        $location.url('/dashboard')
-      }
-    })
-  }
-
-
-  $scope.login = function(){
-    sessionFactory.login($scope.newUser)
-  }
-
 })

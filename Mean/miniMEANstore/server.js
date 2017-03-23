@@ -17,7 +17,7 @@ app.use( function(req, res, next){
 });
 app.use(session({
   secret: 'Do not see my secret.',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
 }));
 // ROUTES //////////////////////

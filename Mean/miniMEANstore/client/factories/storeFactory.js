@@ -31,17 +31,16 @@ App.factory('StoreFactory', function($http, $location){
       .then(function(res){ return res.data; })
   }
 
-  factory.signUp = function(newUser){
+  factory.createUser = function(newUser){
     return $http.post('/users', newUser)
   }
-
-  factory.signIn = function(user){
-    return $http.post('/user', user)
-  }
-
-  factory.logOut = function($http){
-    $http.session.destroy()
-    $location.url('/')
+  
+  factory.login = function(user){
+    $http.post('/login', user).then(function(output){
+      if(output.data.status){
+        $location.url('/dashboard')
+      }
+    })
   }
 
   factory.deleteUser = function(id){
@@ -61,7 +60,7 @@ App.factory('StoreFactory', function($http, $location){
   }
 
   factory.createOrder = function(newOrder){
-    return $http.post(`/orders/${newOrder._product}/${newOrder._customer}/${newOrder._user}`, newOrder)
+    return $http.post(`/orders/${newOrder._product}/${newOrder._customer}`, newOrder)
       .then( function(response){
         if (!response.data) {
           throw new Error('Could not complete purchase...')
@@ -76,18 +75,5 @@ App.factory('StoreFactory', function($http, $location){
   factory.deleteOrder = function(id){
     return $http.delete(`/orders/${id}`)
   }
-
-  factory.getCurUser = function(cb){
-    $http.get('/getcuruser')
-  }
-
-  factory.signIn = function(user){
-    $http.post('/signIn', user).then(function(output){
-      if(output.data.status){
-        $location.url('/dashboard')
-      }
-    })
-  }
-
   return factory;
 })

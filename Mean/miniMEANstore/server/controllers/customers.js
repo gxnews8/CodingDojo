@@ -18,6 +18,16 @@ module.exports = {
       return res.json(true);
     });
   },
+  show: function(req, res){
+  	Order.findById(req.params.id, function(err, customer){
+  		if (err){
+  			res.json(err);
+  		}
+  		else {
+  			res.json(customer);
+  		}
+  	})
+  },
   delete: function(req, res){
     // Remove all orders w/ that user
     Order.removeOrdersByCustomerId(req.params.id, function(err){

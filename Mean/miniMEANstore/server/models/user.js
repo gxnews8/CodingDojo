@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
 var bcrypt = require('bcryptjs');
 
 var USerSchema = new Schema({
-  first_name: String,
-  last_name: String,
-  email: String,
-  password: String,
+  first_name: { type: String, default: 'Coding' },
+  last_name: { type: String, default: 'Dojo' },
+  email: { type: String, default: 'coding@dojo.com' },
+  password: { type: String, default: 'Dojo#2016' },
   birthday: String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date, default: Date.now() }
